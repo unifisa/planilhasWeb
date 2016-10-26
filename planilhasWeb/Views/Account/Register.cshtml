@@ -1,0 +1,115 @@
+﻿@model Planilhas.Models.UserAccount
+@{
+    ViewBag.Title = "Register";
+}
+@if (Request.IsAuthenticated)
+{
+    <div class="central" style="margin-top:20px !important;">
+        <h3>Crie uma conta nova</h3>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @*<h4>Crie sua conta</h4>*@
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @if (TempData["Message"] != null)
+                {
+                    <div class="form-group">
+                        <div class="col-md-6 label-success" style="color:white;">@TempData["Message"]</div>
+                    </div>
+                }
+                @if (TempData["Msg"] != null)
+                
+                    {
+                        <div class="form-group">
+                            <div class="col-md-10 label-danger" style="color:white;">@TempData["Msg"]</div>
+                        </div>
+
+                    }
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 left-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", placeholder = "Digite o nome" } })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Sobrenome, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 left-addon">
+                            <i class="glyphicon glyphicon-arrow-right"></i>
+                            @Html.EditorFor(model => model.Sobrenome, new { htmlAttributes = new { @class = "form-control", placeholder = "Sobrenome" } })
+                            @Html.ValidationMessageFor(model => model.Sobrenome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 left-addon">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "E-mail" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+
+                        @Html.LabelFor(model => model.Departamentos, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 left-addon">
+
+                            @Html.DropDownList("Departamentos", ViewData["departamentos"] as List<SelectListItem>, "-- Escolha o departamento --")
+                            @Html.ValidationMessageFor(model => model.Departamentos)
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 left-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                            @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", placeholder = "Digite o nome de usuario" } })
+                            @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 left-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                            @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", placeholder = "Coloque uma senha forte" } })
+                            @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ConfirmeSenha, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10 left-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                            @Html.EditorFor(model => model.ConfirmeSenha, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirme a senha" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmeSenha, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                <!--Selecione o Tipo de Perfil para o usuário-->
+                @*<div class="form-group">
+        @Html.Label("Selecione o Tipo de Perfil do Usuário", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("Name")
+        </div>
+    </div>*@
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Cadastrar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            @*<div>
+                    @Html.ActionLink("Voltar a lista", "Index")
+                </div>*@
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+        }

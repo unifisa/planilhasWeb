@@ -1,0 +1,361 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.topo-repeat {
+    width: 101%;
+    height: 190px;
+    background-image: url("bg-cinza.png");
+    margin: -8px;
+}
+
+.simulacao-texto {
+    color: white;
+    font-size: 3.06666666667em;
+    line-height: 1em;
+    margin: 67px 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, .2);
+    float: right;
+}
+
+body {
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+    width: 799px;
+    padding: 15px 15px;
+}
+
+.detalhes-simulacao {
+    width: 799px;
+    padding: 30px 0;
+    font-size: 10px !important;
+    color: black;
+}
+
+.header-total {
+    width: 800px;
+    height: 100px;
+    border-top: 4px solid dodgerblue;
+    padding-top: 8px;
+    font-size: 1.66666666667em;
+    color: #545151;
+    font-weight: bold;
+}
+
+.texto-header {
+    margin-left: 31px;
+    margin-top: 16px;
+    width: 320px;
+}
+
+.texto-header-prev {
+    margin-left: 31px;
+    margin-top: 16px;
+    width: 340px;
+}
+
+.form-conteudo {
+    position: relative;
+    margin: auto;
+    width: 800px;
+    height: 370px;
+    font-size: 0.875em;
+    color: dimgrey;
+    font-weight: normal;
+    padding-top: 20px;
+}
+
+.form-conteudo-left {
+    margin-right: 15px;
+}
+
+hr {
+    border: 0;
+    border-bottom: 2px dashed rgba(139, 157, 175, 0.61);
+    margin-bottom: 50px;
+    box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+    -webkit-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+    -moz-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+    -o-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+}
+
+select,
+input,
+input[type=date] {
+    width: 385px;
+    height: 45px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    color: #545252;
+    border: 1px solid rgba(171, 220, 218, 0.92);
+    box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+    -webkit-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+    -moz-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+    -o-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+}
+
+.cinza-tipo-simulacao {
+    height: 120px;
+    width: 700px;
+    border: 1px solid gray;
+    margin-bottom: 0;
+}
+
+.total {
+    width: 100%;
+    height: 100%;
+}
+
+.escolha-simular {
+    margin: auto;
+    width: 799px;
+    background-color: rgba(171, 171, 171, 0.12);
+    font-weight: bold;
+    color: dodgerblue;
+    font-size: 1.1em;
+    line-height: 1em;
+    text-transform: uppercase;
+    height: 100px;
+}
+
+.escolha-simular-prev {
+    margin: auto;
+    width: 799px;
+    background-color: rgba(171, 171, 171, 0.12);
+    font-weight: bold;
+    color: dodgerblue;
+    font-size: 1.1em;
+    line-height: 1em;
+    text-transform: uppercase;
+    height: 100px;
+    border-bottom: 2px dashed gray;
+}
+
+.escolha-blue-text {
+    float: left;
+    padding: 39px 15px 32px 15px;
+    
+}
+
+.radios-right {
+    float: left;
+    width: 450px;
+}
+
+.text-radio {
+    color: #666666;
+    font-size: 12px;
+}
+
+input[type=radio] {
+    height: 14px;
+    width: 20px;
+    padding: 0 10px 0 0;
+    box-shadow: none;
+}
+
+.tipo-valor {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    border-top: 4px solid transparent;
+    padding: 28px 15px 32px 5px;
+    cursor: pointer;
+}
+
+.valor-left {
+    float: left;
+}
+
+.valor-right {
+    float: left;
+}
+
+.ativo {
+    background: white;
+    border-top: 4px solid dodgerblue;
+}
+
+.textbox-tipos-pagamento {
+    margin: auto;
+    width: 799px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+    line-height: 1em;
+    text-transform: uppercase;
+    height: 90px;
+    padding-top: 30px;
+   
+}
+
+.tipos-toggle {
+    width: 165px;
+    height: 35px;
+}
+
+.white-box {
+    float: left;
+    width: 320px;
+    height: 70px;
+}
+
+.conteudo-form {
+    width: 400px;
+    height: 99px;
+    float: left;
+}
+
+.align {
+    float: left;
+    margin-left: 35px;
+}
+
+.align-right {
+    float: left;
+    margin-left: 35px;
+}
+
+.align-replace {
+    float: left;
+    margin-left: 35px;
+}
+
+.hidden {
+    display: none;
+}
+
+.conteudo-direita{
+    width: 220px;
+    height: 90px;
+    float:left; 
+    margin-left:12px;
+    font-size: 11px;
+    color: gray;
+    border-top: 4px solid #1e90ff;
+    padding-top: 20px;
+}
+
+.valor-mensal{
+    width: 200px;
+    margin-top: 25px;
+}
+
+.valor-mensal-prev{
+    width: 220px;
+    margin-top: 0;
+    
+}
+.botao-final {
+    margin: auto;
+    width: 799px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+    line-height: 1em;
+    text-transform: uppercase;
+    height: 90px;
+}
+
+button {  
+  float:right;
+  border-radius: 4px;
+  background-color: #1e90ff;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 22px;
+  padding: 10px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 25px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+table {
+    margin:auto;
+    margin-top: 60px;
+    width: 799px;
+    border-collapse: separate;
+    
+}
+
+thead > tr > th{
+    
+    text-align: center;
+    background: #838383;
+    color: #fff;
+    font-size: 0.933333333333em;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 26px 10px;
+}
+
+tr{
+    border-bottom: 1px solid #c9c9c9;
+}
+
+
+tr:hover{
+    background-color: #f5f5f5;
+    
+}
+
+td{
+    text-transform: uppercase;
+    color: dimgrey;
+    text-align: center;
+    padding: 26px 10px;
+    vertical-align: middle;
+    font-size: 1.2em;
+    line-height: 1.2em;
+   font-family: 'Lato', sans-serif;
+    font-weight: normal;
+    
+}
+
+
+.texto-calculo{
+    width: 799px;
+    height: 314px;
+    padding-top: 20px;
+     margin:auto;
+    text-align: left;
+    font-size: 1em;
+    color: #4d4d4d;
+    font-weight: normal;
+    font-family: 'Hind', sans-serif;
+   
+   
+}

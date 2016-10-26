@@ -1,0 +1,486 @@
+﻿@model Planilhas.Models.diluicao_normal
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Planilha de Cálculo para Cadastro de Adesão">
+    <meta name="author" content="LDesigner">
+
+    <title>Planilha</title>
+
+
+</head>
+
+<body>
+
+    @using (Html.BeginForm())
+
+    {
+        @Html.HiddenFor(model => model.ID)
+        @Html.AntiForgeryToken()
+        @*<div id="page-wrapper">*@
+        <div class="row">
+            <div class="col-lg-12">
+                <h5 style="margin-top:10px;"><a href="/Listar_DN/Index">Voltar</a></h5>
+
+
+
+            </div>
+        </div>
+                <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4 class="header" style="margin-top:0; margin-bottom:15px;">Diluição Normal</h4>
+                        <div class="row">
+                            <form id="form">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-3">
+                                        <div class="input-group-addon">
+                                            <label>Cliente</label>
+                                            <div class="input-group">
+
+                                                @Html.TextBoxFor(model => model.cliente, new { @class = "form-control", @placeholder = "Cliente" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group-addon">
+                                            <label>Grupo</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.grupo, new { @class = "form-control", @placeholder = "grupo" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group-addon">
+                                            <label>Cota</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.cota, new { @class = "form-control", @placeholder = "cota" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="input-group-addon">
+                                            <label>Contrato</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.contrato, new { @class = "form-control", @placeholder = "contrato" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                <div class="col-lg-12">
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Prazo</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                @Html.TextBoxFor(model => model.prazo, new { @class = "form-control", @placeholder = "Prazo", @style = "background-color:#DEE2EB;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Tx. Adm. Total</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.tx_adm_total, new { @class = "form-control", @style = "background-color:#DEE2EB;", id = "tx_adm_total", @placeholder = "tx_adm_total", Value = String.Format("{0:n2}", Model.tx_adm_total) })
+                                                <span class="input-group-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Fdo. Reserva</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(x => x.fdo_reserva, new { @class = "form-control", id = "fdo_reserva", @placeholder = "fdo_reserva", Value = String.Format("{0:n2}", Model.fdo_reserva), @style = "background-color:#DEE2EB;" })
+                                                <span class="input-group-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Seguro</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(x => x.seguro_percent, new { @class = "form-control", id = "seguro_percent", @placeholder = "seguro_percent", Value = String.Format("{0:n3}", Model.seguro_percent), @style = "background-color:#DEE2EB;" })
+                                                <span class="input-group-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Tx. Adm. Desc. ad.</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(x => x.txt_adm_desc_ad, new { @class = "form-control", id = "txt_adm_desc_ad", @placeholder = "txt_adm_desc_ad", Value = String.Format("{0:n3}", Model.txt_adm_desc_ad) })
+                                                @*<span class="input-group-addon">%</span>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Bem + Txs. no plano</label>
+                                            @Html.TextBoxFor(x => x.bem_taxa_no_plano, new { @class = "form-control", id = "bem_taxa_no_plano", @placeholder = "bem_taxa_no_plano", Value = String.Format("{0:n3}", Model.bem_taxa_no_plano) })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>À Vista</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                <input type="text" class="form-control" placeholder="À Vista">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Vl. Adesão 0,000% dividido</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                <input type="text" class="form-control" placeholder="Vl. Adesão 0,000% dividido">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>-</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control">
+                                                <span class="input-group-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Vl. Adesão 7,000% diluído</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                <input type="text" class="form-control" placeholder="Vl. Adesão 7,000% diluído">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>-</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control">
+                                                <span class="input-group-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Vlr. bem</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.vlr_bem, new { @class = "form-control", id = "vlr_bem", @placeholder = "vlr_bem", Value = String.Format("{0:n2}", Model.vlr_bem), @style = "background-color:#DEE2EB;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Vlr. bem + tx's</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.vlr_bem_mais_tax, new { @class = "form-control", id = "vlr_bem_mais_tax", @placeholder = "vlr_bem_mais_tax", Value = String.Format("{0:n2}", Model.vlr_bem_mais_tax) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Vlr. parc.s/seg.</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.vlr_parce_sem_seguro, new { @class = "form-control", id = "vlr_seguro", @placeholder = "vlr_seguro", Value = String.Format("{0:n2}", Model.vlr_parce_sem_seguro) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Vlr. Seg.</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.vlr_seguro, new { @class = "form-control", id = "vlr_parce_sem_seguro", @placeholder = "vlr_parce_sem_seguro", Value = String.Format("{0:n2}", Model.vlr_seguro) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Parc. Sem Ad. Dilu.</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.parc_sem_ad_dilu, new { @class = "form-control", id = "parc_sem_ad_dilu", @placeholder = "parc_sem_ad_dilu", Value = String.Format("{0:n2}", Model.parc_sem_ad_dilu) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group input-group">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Vlr Parcela Inicial mais adesão.</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.vlr_parcela_inicial_mais_adesao, new { @class = "form-control", id = "vlr_parcela_inicial_mais_adesao", @placeholder = "vlr_parcela_inicial_mais_adesao", Value = String.Format("{0:n2}", Model.vlr_parcela_inicial_mais_adesao) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Vlr Parcela Mensal Iniciais.</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.vlr_parc_mensal_iniciais, new { @class = "form-control", id = "vlr_parc_mensal_iniciais", @placeholder = "vlr_parc_mensal_iniciais", Value = String.Format("{0:n2}", Model.vlr_parc_mensal_iniciais) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label>Vlr Parcela Mensal parc Restantes.</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.vlr_parc_mensal_parc_restantes, new { @class = "form-control", id = "vlr_parc_mensal_parc_restantes", @placeholder = "vlr_parc_mensal_parc_restantes", Value = String.Format("{0:n2}", Model.vlr_parc_mensal_parc_restantes) })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Bem</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.vlr_bem, new { @class = "form-control", id = "vlr_bem", @placeholder = "vlr_bem", Value = String.Format("{0:n2}", Model.vlr_bem) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Adm</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.valor_adm, new { @class = "form-control", id = "valor_adm", @placeholder = "valor_adm", Value = String.Format("{0:n2}", Model.valor_adm) })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>F. Res</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.f_res, new { @class = "form-control", id = "f_res", @placeholder = "f_res", Value = String.Format("{0:n2}", Model.f_res) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Seguro</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.resumo_seguro, new { @class = "form-control", id = "seguro", @placeholder = "seguro", Value = String.Format("{0:n2}", Model.resumo_seguro) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Total</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.resumo_total, new { @class = "form-control", id = "resumo_total", @placeholder = "Total", Value = String.Format("{0:n2}", Model.resumo_total) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Ad. à Vista</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.ad_a_vista_valor1, new { @class = "form-control", id = "ad_a_vista_valor1", @placeholder = "ad_a_vista_valor1", Value = String.Format("{0:n0}", Model.ad_a_vista_valor1), @style = "background-color:#DEE2EB;" })
+                                                @Html.TextBoxFor(x => x.ad_a_vista, new { @class = "form-control", id = "ad_a_vista", @placeholder = "ad_a_vista", Value = String.Format("{0:n2}", Model.ad_a_vista) })
+                                                @Html.TextBoxFor(x => x.ad_a_vista_valor2, new { @class = "form-control", id = "ad_a_vista_valor2", @placeholder = "ad_a_vista_valor2", Value = String.Format("{0:n2}", Model.ad_a_vista_valor2) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Parc. Inic</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.parc_ini_valor1, new { @class = "form-control", id = "parc_ini_valor1", @placeholder = "parc_ini_valor1", Value = String.Format("{0:n0}", Model.parc_ini_valor1), @style = "background-color:#DEE2EB;" })
+                                                @Html.TextBoxFor(x => x.parc_inicial, new { @class = "form-control", id = "parc_ini_valor1", @placeholder = "parc_ini_valor1", Value = String.Format("{0:n2}", Model.parc_inicial) })
+                                                @Html.TextBoxFor(x => x.parc_ini_valor2, new { @class = "form-control", id = "parc_ini_valor2", @placeholder = "parc_ini_valor2", Value = String.Format("{0:n2}", Model.parc_ini_valor2) })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Parcelas Rest. </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.parcelas_restantes_valor1, new { @class = "form-control", id = "parcelas_restantes_valor1", @placeholder = "parcelas_restantes_valor1", Value = String.Format("{0:n0}", Model.parcelas_restantes_valor1), @style = "background-color:#DEE2EB;" })
+                                                @Html.TextBoxFor(x => x.vlr_parc_mensal_parc_restantes, new { @class = "form-control", id = "vlr_parc_mensal_parc_restantes", @placeholder = "vlr_parc_mensal_parc_restantes", Value = String.Format("{0:n2}", Model.vlr_parc_mensal_parc_restantes) })
+                                                @Html.TextBoxFor(x => x.parcelas_restantes_valor2, new { @class = "form-control", id = "parc_ini_valor2", @placeholder = "parc_ini_valor2", Value = String.Format("{0:n2}", Model.parcelas_restantes_valor2) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Total</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.total_quadro, new { @class = "form-control", id = "total_quadro", @placeholder = "total_quadro", Value = String.Format("{0:n0}", Model.total_quadro) })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>1º Parcela</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.parcela_1, new { @class = "form-control", id = "parcela_1", @placeholder = "parcela_1", Value = String.Format("{0:n0}", Model.parcela_1), @style = "background-color:#DEE2EB;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Lance</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.lance, new { @class = "form-control", id = "lance", @placeholder = "lance", Value = String.Format("{0:n0}", Model.lance), @style = "background-color:#DEE2EB;" })
+                                                @Html.TextBoxFor(x => x.lance_valor, new { @class = "form-control", id = "lance_valor", @placeholder = "lance_valor", Value = String.Format("{0:n2}", Model.lance_valor) })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Saldo Devedor</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">R$</span>
+                                                @Html.TextBoxFor(x => x.saldo_devedor, new { @class = "form-control", id = "saldo_devedor", @placeholder = "saldo_devedor", Value = String.Format("{0:n2}", Model.saldo_devedor) })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label>Rateio Meses -1ª</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    @Html.TextBoxFor(model => model._qte_meses, new { @class = "form-control", @placeholder = "_qte_meses", Value = String.Format("{0:n0}", Model._qte_meses) })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    @Html.TextBoxFor(model => model._j38, new { @class = "form-control", @placeholder = "_j38", Value = String.Format("{0:n2}", Model._j38) })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    @Html.TextBoxFor(model => model._l39, new { @class = "form-control", @placeholder = "_l39", Value = String.Format("{0:n2}", Model._l39) })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                            </form>
+
+
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+                <!-- /.row -->
+            <!--</div>  -->
+        <!-- /#page-wrapper -->
+    }
+    @*</div>*@
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sheets.js"></script>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

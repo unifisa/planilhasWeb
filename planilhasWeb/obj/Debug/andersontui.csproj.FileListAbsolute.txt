@@ -1,0 +1,238 @@
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.csprojResolveAssemblyReference.cache
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.InitialCreate.resources
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.AddDescriptionCategory.resources
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.csproj.GenerateResource.Cache
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.pdb
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\csc.exe
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\vbc.exe
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\VBCSCompiler.exe
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\andersontui.dll.config
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\andersontui.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\andersontui.pdb
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Antlr3.Runtime.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\EntityFramework.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\EntityFramework.SqlServer.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Newtonsoft.Json.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Owin.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Helpers.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Mvc.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Optimization.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Razor.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.Razor.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\WebGrease.dll
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Helpers.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Mvc.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Optimization.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Razor.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.Razor.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Antlr3.Runtime.pdb
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Newtonsoft.Json.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\EntityFramework.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\EntityFramework.SqlServer.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\csc.exe
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\vbc.exe
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\VBCSCompiler.exe
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\andersontui.dll.config
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\andersontui.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\andersontui.pdb
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Antlr3.Runtime.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\EntityFramework.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\EntityFramework.SqlServer.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Newtonsoft.Json.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Owin.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Helpers.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Mvc.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Optimization.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Razor.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.Razor.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\WebGrease.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Helpers.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Mvc.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Optimization.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.Razor.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\System.Web.WebPages.Razor.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Antlr3.Runtime.pdb
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Newtonsoft.Json.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\EntityFramework.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\EntityFramework.SqlServer.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.InitialCreate.resources
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.AddDescriptionCategory.resources
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.csproj.GenerateResource.Cache
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.dll
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.pdb
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.csprojResolveAssemblyReference.cache
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name.resources
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name1.resources
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name2.resources
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name3.resources
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name4.resources
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name5.resources
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name.resources
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name1.resources
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name2.resources
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name3.resources
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name4.resources
+C:\Users\Anderson\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name5.resources
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name6.resources
+C:\Users\ameneses\Dropbox\Projetos\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name7.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\csc.exe
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\vbc.exe
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\VBCSCompiler.exe
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\andersontui.dll.config
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\andersontui.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\andersontui.pdb
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Antlr3.Runtime.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\EntityFramework.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\EntityFramework.SqlServer.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Newtonsoft.Json.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Owin.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.Helpers.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.Mvc.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.Optimization.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.Razor.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.WebPages.Deployment.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.WebPages.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.WebPages.Razor.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\WebGrease.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.Helpers.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.Mvc.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.Optimization.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.Razor.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.WebPages.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.WebPages.Deployment.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\System.Web.WebPages.Razor.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Antlr3.Runtime.pdb
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Newtonsoft.Json.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\EntityFramework.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\EntityFramework.SqlServer.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.csprojResolveAssemblyReference.cache
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.InitialCreate.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.AddDescriptionCategory.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name1.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name2.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name3.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name4.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name5.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name6.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.Migrations.Give_it_a_name7.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.csproj.GenerateResource.Cache
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.dll
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\andersontui\andersontui\andersontui\obj\Debug\andersontui.pdb

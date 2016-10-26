@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SIG - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+    <div class="container body-content" style="background-color:white;">
+
+
+        @RenderBody()
+
+
+    </div>
+    <div class="div-footer">
+
+        <p>
+
+            @if (ViewBag.title != "Login")
+            {
+                <img src="~/Content/sig-logo.png" title="SIG" />
+            }
+            Copyright &copy; @DateTime.Now.Year - Dep. Tecnologia Unifisa
+        </p>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqwidgets")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+</body>
+</html>

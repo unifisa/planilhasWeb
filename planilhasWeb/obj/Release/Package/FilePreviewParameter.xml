@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/TestePlanilhas" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\unifisa\\Documents\\Visual\ Studio\ 2015\\Projects\\Planilhas\\unifisaPlanilhas\\planilhasWeb\\planilhasWeb\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\unifisa\\Documents\\Visual\ Studio\ 2015\\Projects\\Planilhas\\unifisaPlanilhas\\planilhasWeb\\planilhasWeb\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="OurConnectionString-Web.config Connection String" description="" value="Data Source=UNIFISA-PC\SQLEXPRESS;Initial Catalog=aspnet-Planilhas;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\unifisa\\Documents\\Visual\ Studio\ 2015\\Projects\\Planilhas\\unifisaPlanilhas\\planilhasWeb\\planilhasWeb\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OurConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="Planilhas.Models.OurDbContext-Web.config Connection String" description="" value="Data Source=UNIFISA-PC\SQLEXPRESS;Initial Catalog=Planilhas;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\unifisa\\Documents\\Visual\ Studio\ 2015\\Projects\\Planilhas\\unifisaPlanilhas\\planilhasWeb\\planilhasWeb\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Planilhas.Models.OurDbContext']/@connectionString" />
+  </parameter>
+</parameters>

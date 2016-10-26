@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Simulação</title>
+    <meta name="description" content="An interactive getting started guide for Brackets.">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="default.css" />
+    <link rel="stylesheet" type="text/css" href="component.css" />
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.maskmoney.js"></script>
+    <script>
+        $(document).ready(function() {
+            /* Configuração para Real */
+            $('#investimento').maskMoney({
+                symbol: 'R$',
+                /* Símbolo da moeda */
+                decimal: ',',
+                /* Separador de decimais */
+                thousands: '.',
+                /* Separador de milhares */
+                precision: 2,
+                /* Precisão dos decimais */
+                allowZero: false,
+                /* Libera o 0 à esquerda */
+                showSymbol: true /* Mostrar símbolo da moeda */
+            });
+        });
+
+        function mascara(o, f) {
+            v_obj = o
+            v_fun = f
+            setTimeout("execmascara()", 1)
+        }
+
+        function execmascara() {
+            v_obj.value = v_fun(v_obj.value)
+        }
+
+        function telefone(v) {
+            v = v.replace(/\D/g, "") //Remove tudo o que não é dígito
+            v = v.replace(/^(\d\d)(\d)/g, "($1) $2") //Coloca parênteses em volta dos dois primeiros dígitos
+            v = v.replace(/(\d{5})(\d)/, "$1-$2") //Coloca hífen entre o quarto e o quinto dígitos
+            return v
+        }
+
+        $(document).ready(function() {
+            $(".onoffswitch-switch, .onoffswitch-inner, onoffswitch-label").on('click', function() {
+                $(".escolher-right").toggleClass("active");
+                $(".escolher").toggleClass("active");
+
+            });
+        });
+
+        $(function() {
+            $(".onoffswitch-switch, .onoffswitch-inner, onoffswitch-label").click(function() {
+                // remove classes from all
+                $(".radioac").toggleClass("hidden");
+
+            });
+        });
+        
+        function myFunction(){
+           document.getElementById("meuForm").submit();
+            
+        }
+
+        $(document).on("keypress", "#itelefone", function (e) {
+            //                          ^ this . indicates that it's a class selector
+            mascara(this, telefone);
+        });
+
+    </script>
+
+
+</head>
+
+<body>
+    <h2 style="color:gray; border-color:black;">SIMULAÇÃO</h2>
+    <div class="header-quadrado">
+        <div style="color:white; width:300px; float:left;">FAÇA UMA <i>SIMULAÇÃO</i></div>
+        <div style="float:left;">
+            <div class="escolher active"> Consórcio de Imóveis </div>
+        </div>
+        <div class="onoffswitch" style="float:left; margin-top:5px;">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+            <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+        </div>
+
+        <div class="escolher-right" style="float:left;">
+            Aposentadoria Imobiliária
+
+        </div>
+    </div>
+
+    <div class="quadrado-meio">
+        <form id="meuForm" action="calculo.aspx" method="POST">
+        <div class="form">
+            <div class="form-group nome">
+                <input type="text" class="form-control" name="nome" id="nome" placeholder="NOME" required aria required="true">
+            </div>
+            <div class="form-group email">
+                <input type="text" class="form-control" name="email" id="email" placeholder="EMAIL" required aria required="true">
+            </div>
+            <div class="form-group">
+                <label for="itelefone">
+                    <input type="text" class="form-control" style="width:145px;" name="telefone" id="itelefone" placeholder="TELEFONE" required  maxlength="15">
+                    </label>
+            </div>
+            <div class="form-group radioac" style="padding-top:0; width:202px; font-weght: normal; font-size:12px; text-transform:uppercase;">
+                <label class="radio">
+                        <input type="radio" name="valores" value="credito">
+                        <span>Por valor de crédito</span>
+                    </label><br>
+                <label class="radio">
+                        <input type="radio" name="valores" value="parcela">
+                        <span>Por parcela</span>
+                    </label>
+            </div>
+            <div class="form-group radioac hidden">
+                <input type="text" class="form-control" style="width:195px;" name="investimento" id="investimento" placeholder="($)INVESTIMENTO MENSAL" required aria required="true">
+            </div>
+
+            <div class="form-group">
+            </div>
+
+            <button type="submit" class="btn btn-4 btn-4a" style="width:156px;" onclick="myFunction()">SIMULAR</button>
+        </div>
+        </form>
+
+    </div>
+
+
+
+
+</body>
+
+</html>

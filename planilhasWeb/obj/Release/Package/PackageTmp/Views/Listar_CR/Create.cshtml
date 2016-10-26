@@ -1,0 +1,332 @@
+﻿@model Planilhas.Models.Calc_Rateio
+
+@{
+    ViewBag.Title = "ListaDiretoria";
+}
+<!DOCTYPE html>
+
+
+@if (Request.IsAuthenticated && ViewBag.title != "Login")
+{
+
+    <head>
+
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Planilha de Cálculo para Cadastro de Adesão">
+        <meta name="author" content="LDesigner">
+
+        <link href="~/Content/Lista.css" media="all" rel="stylesheet">
+        <link href="~/Content/Site.css" media="all" rel="stylesheet">
+        <link href="~/Content/input-form-control.css" media="all" rel="stylesheet">
+
+        <title>Planilha</title>
+
+    </head>
+
+
+    <body style="overflow:hidden;">
+
+        @using (Html.BeginForm())
+        {
+
+            @Html.HiddenFor(model => model.ID)
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="noPrint">
+                        <h5 style="margin-top:10px;"><a href="/Listar_CR/Index"><span class="noPrint"> Voltar</span></a></h5>
+                    </div>
+                </div>
+                <div class="noPrint" style="margin-left:18px;">
+                    @if (TempData["Message"] != null)
+                    {
+                        <h4 class="mensagem-sucesso" style="color:forestgreen; font-family:'Lucida Sans'; margin-left:15px; margin-bottom:1px;">@TempData["Message"]</h4>
+                    }
+                </div>
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h4 class="header" style="margin-top:0; margin-bottom:15px; margin-left:28px;">Cálculo Rateio</h4>
+                            <div class="row">
+                                <form role="form">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <div class="input-group-addon" style="border-bottom:none; border-top:none; border-left:none;">
+                                                <label>Cliente</label>
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(model => model.cliente, new { @class = "form-control", @placeholder = "Cliente" })
+
+                                                </div>
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.cliente, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="input-group-addon" style="border-bottom:none; border-top:none; border-left:none;">
+                                                <label>Grupo</label>
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(model => model.grupo, new { @class = "form-control", @placeholder = "grupo" })
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="input-group-addon" style="border-bottom:none; border-top:none; border-left:none;">
+                                                <label>Cota</label>
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(model => model.cota, new { @class = "form-control", @placeholder = "cota" })
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="input-group-addon" style="border-bottom:none; border-top:none; border-left:none;">
+                                                <label>Contrato</label>
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(model => model.contrato, new { @class = "form-control", @placeholder = "contrato" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                    <div class="col-sm-12" style="margin-top:95px;">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Bem</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">R$</span>
+
+                                                    @Html.TextBoxFor(model => model.bem, new { @class = "form-control", @style = "background-color:#DEE2EB;", @placeholder = "Bem", Value = String.Format("{0:n2}", Model.bem) })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Porc. paga</label>
+
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">%</span>
+                                                    @Html.TextBoxFor(model => model.porc_paga, new { @class = "form-control", id = "pago", @placeholder = "% pago", @style = "background-color:#DEE2EB;", Value = String.Format("{0:n2}", Model.porc_paga) })
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>% Quitação</label>
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(x => x.quitacao, new { @class = "form-control", id = "fdo_reserva", @placeholder = "% quitação", Value = String.Format("{0:n2}", Model.quitacao) })
+                                                    <span class="input-group-addon">%</span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Bem com taxas</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">R$</span>
+                                                    @Html.TextBoxFor(x => x.bem_com_txs, new { @class = "form-control", id = "bem_com_txs", @placeholder = "bem com txs", Value = String.Format("{0:n2}", Model.bem_com_txs) })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Quit. sem seg</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">R$</span>
+                                                    @Html.TextBoxFor(x => x.quit_sem_seg, new { @class = "form-control", id = "quit_sem_seg", @placeholder = "", Value = String.Format("{0:n2}", Model.quit_sem_seg) })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Assemb Vencidas</label>
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(x => x.assemb_vencidas, new { @class = "form-control", id = "assemb_vencidas", @placeholder = "assemb_vencidas", @style = "background-color:#DEE2EB;" })
+                                                    @*<span class="input-group-addon">%</span>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Parcelas faltantes</label>
+                                                @Html.TextBoxFor(x => x.parc_faltam, new { @class = "form-control", id = "parc_faltam", @placeholder = "parc_faltam", @style = "background-color:#DEE2EB;" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Taxa ADM</label>
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(x => x.taxa_adm, new { @class = "form-control", id = "taxa_adm", @placeholder = "taxa_adm", Value = String.Format("{0:n0}", Model.taxa_adm), @style = "background-color:#DEE2EB;" })
+                                                    <span class="input-group-addon">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Fundo Reserva</label>
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(x => x.fundo_reserv, new { @class = "form-control", id = "fundo_reserv", @placeholder = "fundo_reserv", Value = String.Format("{0:n2}", Model.fundo_reserv), @style = "background-color:#DEE2EB;" })
+                                                    <span class="input-group-addon">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>% Seguro</label>
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(x => x.porc_seguro, new { @class = "form-control", id = "porc_seguro", @placeholder = "porc_seguro", Value = String.Format("{0:n3}", Model.porc_seguro), @style = "background-color:#DEE2EB;" })
+                                                    <span class="input-group-addon">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Seguro</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">%</span>
+                                                    @Html.TextBoxFor(x => x.seguro, new { @class = "form-control", id = "seguro", @placeholder = "seguro", Value = String.Format("{0:n2}", Model.seguro) })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Parc. Inicial</label>
+                                                @Html.TextBoxFor(x => x.parc_inicial, new { @class = "form-control", id = "parc_inicial", @placeholder = "parc_inicial", Value = String.Format("{0:n0}", Model.parc_inicial) })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Parc. Final</label>
+                                                @Html.TextBoxFor(x => x.parc_final, new { @class = "form-control", id = "parc_final", @placeholder = "parc_final", Value = String.Format("{0:n0}", Model.parc_final) })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Amortização</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">R$</span>
+                                                    @Html.TextBoxFor(x => x.amortizacao, new { @class = "form-control", id = "amortizacao", @placeholder = "amortizacao", Value = String.Format("{0:n2}", Model.amortizacao) })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Em %</label>
+                                                <div class="input-group">
+
+                                                    @Html.TextBoxFor(x => x.em_porcentagem, new { @class = "form-control", id = "em_porcentagem", @placeholder = "em_porcentagem", Value = String.Format("{0:n4}", Model.em_porcentagem) })
+                                                    <span class="input-group-addon">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Total</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">R$</span>
+                                                    @Html.TextBoxFor(x => x.total, new { @class = "form-control", id = "total", @placeholder = "total", Value = String.Format("{0:n2}", Model.total) })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="input-group" style="margin-top:23px;">
+                                                <label> </label>
+                                                @Html.TextBoxFor(x => x.div_total, new { @class = "form-control", id = "div_total", @placeholder = "", Value = String.Format("{0:n4}", Model.div_total) })
+                                                <span class="input-group-addon">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2" style="margin-top:23px;">
+                                            <div class="input-group">
+                                                <label> </label>
+                                                @Html.TextBoxFor(x => x.zero_porc, new { @class = "form-control", id = "zero_porc", @placeholder = "", Value = String.Format("{0:n4}", Model.zero_porc) })
+                                                <span class="input-group-addon">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label>Total</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(x => x.total_final, new { @class = "form-control", id = "total_final", @placeholder = "", Value = String.Format("{0:n4}", Model.total_final) })
+                                                <span class="input-group-addon">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </form>
+                            </div>
+
+                            <div class="col-sm-10">
+                                <span class="noPrint">
+
+                                    <input type="submit" value="Salvar" class="btn btn-default col-sm-1" />
+
+                                </span>
+                                @*@Html.ActionLink("Criar nova", "Create")*@
+                                <br />
+
+                            </div>
+
+
+
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+
+        <!-- /.col-sm-12 -->
+
+
+
+        }
+
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+        <!-- DataTables JavaScript -->
+        <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+
+        <!-- Custom Theme JavaScript -->
+        <script src="dist/js/sheets.js"></script>
+
+
+    </body>
+
+}

@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNet.Identity
+@Styles.Render("~/Content/Lista.css")
+@{
+    ViewBag.Title = "ListaDiretoria";
+}
+
+<head>
+    <script>
+        function Mudarestado(id) {
+            var dis = document.getElementById(id);
+            if (dis.style.display == "block")
+                document.getElementById(id).style.display = 'none';
+            
+            else
+                document.getElementById(id).style.display = 'block';            
+        }
+    </script>
+</head>
+
+@if (Request.IsAuthenticated && ViewBag.title != "Login")
+{
+    
+    <h4 class="lista-estilo-divpai col-md-12">
+        <a href="#" onclick="Mudarestado('calculo')"> Calculo % </a>
+    </h4>
+
+
+    <div id="calculo" class="col-md-8 margem" hidden>
+        <ul>
+            <li class="col-md-8 lista-estilo">Diluição Normal [<a href="/Listar_DN/Index">Listagem</a>]</li>
+            <li class="col-md-8 lista-estilo">Diluição especial</li>
+            <li class="col-md-8 lista-estilo">Cálculo forçado normal</li>
+        </ul>
+    </div>
+
+
+    <h4 class="lista-estilo-divpai col-md-12">
+        <a href="#" onclick="Mudarestado('rateio')"> Calculo rateio sem adesão </a>
+    </h4>
+
+
+    <div id="rateio" class="col-md-8 margem" hidden>
+        <ul>
+            <li class="col-md-8 lista-estilo">Rateio sem adesão [@Html.ActionLink("Listagem", "Index", "Listar_CR")]</li>
+
+        </ul>
+    </div>
+    
+
+}

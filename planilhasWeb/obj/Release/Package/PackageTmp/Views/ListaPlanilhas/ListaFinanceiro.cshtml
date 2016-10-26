@@ -1,0 +1,44 @@
+﻿
+@using Microsoft.AspNet.Identity
+@Styles.Render("~/Content/Lista.css")
+@{
+    ViewBag.Title = "ListaFinanceiro";
+}
+
+<head>
+    <script>
+        function Mudarestado(id) {
+            var dis = document.getElementById(id);
+            if (dis.style.display == "block")
+                document.getElementById(id).style.display = 'none';
+
+            else
+                document.getElementById(id).style.display = 'block';
+
+        }
+    </script>
+</head>
+
+@if (Request.IsAuthenticated && ViewBag.title != "Login")
+{
+
+    <h4 class="lista-estilo-divpai col-md-12">
+        <a href="#" onclick="Mudarestado('requisicao')"> Requisição de Pagamento </a>
+    </h4>
+
+
+    <div id="requisicao" class="col-md-8 margem" hidden>
+        <ul>
+            <li class="col-md-8 lista-estilo">Requisições de pagamento - UNIFISA [<a href="/Requisicao/Index">Listagem</a>]</li>
+            <li class="col-md-8 lista-estilo">Requisições de pagamento - FISA [<a href="/Requisicao_Fisa/Index">Listagem</a>]</li>
+            <li class="col-md-8 lista-estilo">Requisições de pagamento - CEMY [<a href="/Requisicao_Cemy/Index">Listagem</a>]</li>
+           
+        </ul>
+    </div>
+
+    
+
+
+
+
+}

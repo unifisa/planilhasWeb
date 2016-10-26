@@ -1,0 +1,793 @@
+﻿@model Planilhas.Models.Requisicao_Fisa
+
+@{
+    ViewBag.Title = "ListaFinanceiro";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+@if (Request.IsAuthenticated && ViewBag.title != "Login")
+{
+
+    <head>
+
+
+        @section Scripts {
+            @*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+                <script src="~/Scripts/jquery.maskMoney.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                    $(function () {
+                        $(".mask").maskMoney({
+                            symbol: 'R$ ',
+                            showSymbol: true, thousands: '.', decimal: ',', symbolStay: true
+                        });
+                    })
+                </script>*@
+
+
+
+            <script type="text/javascript" language="javascript">
+
+                //Listagem das despesas
+                var despesa = { "Internet": "internet", "Telefone": "telefone", "Serviços de Terceiro": "servicos", "Site de Hospedagem": "site_hosp", "Pacote de Serviços": "pacote_serv", "Conserto de Equipamentos": "conserto_equip", "Compra de Equipamentos": "compra_equip" };
+
+                //Listagem das despesas e categorias
+                var internet = { "Internet 60 MB": "Internet 60 MB", "Internet Speedy 80 MB": "Internet Speedy 80 MB" };
+                var telefone = { "Edge": "edge", "Fiesta": "fiesta", "Focus": "focus" };
+                var servicos = { "Doblo": "doblo", "Fiat 500": "fiat500", "Palio": "palio" };
+                var site_hosp = { "Mercedez": "mercedez", "BMW": "bmw", "Palio": "palio" };
+                var pacote_serv = { "Audi": "audi", "A4": "a4", "A1": "a1" };
+                var conserto_equip = { "Moto": "moto", "R1": "r1", "Harley": "harley" };
+                var compra_equip = { "Onibus": "onibus", "R1": "r1", "Harley": "harley" };
+
+
+                $(document).ready(function () {
+                    //Preenche o combo Marca
+                    $.each(despesa, function (text, value) {
+                        $("#dropmarca").append(
+                          $('<option/>')
+                               .attr('value', value)
+                               .text(text)
+                        );
+                    });
+
+                    //Evento do dropMarca para preencher o dropModelo
+                    $('#dropmarca').on('change', function () {
+
+                        //Limpa o DropDownList Modelo antes de preencher
+                        $('#dropmodelo').empty();
+
+                        //Preenche com os modelos a partir da marca selecionada
+                        $.each(eval(this.value), function (text, value) {
+                            $("#dropmodelo").append(
+                              $('<option/>')
+                                  .attr('value', value)
+                                  .text(text)
+                            );
+                        });
+                    });
+                });
+
+
+                $(function () {
+                    $('input[type=datetime]').datepicker({
+
+                        dateFormat: 'dd/mm/yy',
+                        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                        nextText: 'Proximo',
+                        prevText: 'Anterior',
+                        showOn: "button",
+                        showAnim: "drop"
+                    }).css("display", "inline-block")
+                    .next("button").button({
+                        icons: { primary: "ui-icon-calendar" },
+                        label: "Selecione uma data",
+                        text: false
+                    });
+
+
+
+
+                });
+
+
+            </script>
+
+
+        }
+
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Requisição de pagamento">
+        <meta name="author" content="LDesigner">
+
+        <link href="~/Content/Lista.css" media="all" rel="stylesheet">
+        <link href="~/Content/Site.css" media="all" rel="stylesheet">
+        <link href="~/Content/requisicao.css" media="all" rel="stylesheet">
+
+
+        <title>Planilha</title>
+
+        <style media="print">
+            * {
+                zoom: 97%;
+            }
+        </style>
+
+
+
+    </head>
+
+    <body style="line-height:none !important;">
+
+
+
+
+        @using (Html.BeginForm())
+
+        {
+            @Html.HiddenFor(model => model.ID)
+            @Html.AntiForgeryToken()
+            @*<div id="page-wrapper">*@
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="noPrint">
+                            <h5 style="margin-top:10px;"><a href="/Requisicao_Fisa/Index">Voltar</a></h5>
+                        </div>
+                    </div>
+                    @*<div class="noPrint">
+                        @if (TempData["Message"] != null)
+                    {
+                            <h6 class="mensagem-sucesso" style="color:forestgreen; font-family:'Lucida Sans'; margin-left:15px; margin-bottom:1px;">@TempData["Message"]</h6>
+                        }
+                    </div>*@
+                </div>@* end tag row*@
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="header" style="margin-top:0; margin-bottom:15px; margin-left:28px;">Requisição de pagamento</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <form id="form">
+                                <div class="col-sm-12 noPrint">
+                                    <div class="col-sm-4">
+
+                                        <div class="input-group-addon" style="border-bottom:none; border-top:none; border-left:none; border-radius:5px;">
+                                            <label>Ano</label>
+                                            <div class="input-group">
+                                                @Html.DropDownListFor(model => model.ano_despesa, new SelectList(
+                                                new List<Object>{
+                                                   new { value = 2016 , text = "2016"  }
+
+                                                }
+                                                , "value", "text", 2), "", new { @style = "width: 200px; border-radius:5px;" })
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.ano_despesa, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="input-group-addon" style="border-bottom:none; border-top:none; border-left:none; border-radius:5px;">
+                                            <label>Mês</label>
+                                            <div class="input-group">
+                                                @Html.DropDownListFor(model => model.mes_despesa, new SelectList(
+                                                new List<Object>{
+                                                    new { value = "Janeiro" , text = "Janeiro"  },
+                                                    new { value = "Fevereiro" , text = "Fevereiro"  },
+                                                      new { value = "Março" , text = "Março"  },
+                                                        new { value = "Abril" , text = "Abril"  },
+                                                          new { value = "Maio" , text = "Maio"  },
+                                                            new { value = "Junho" , text = "Junho"  },
+                                                              new { value = "Julho" , text = "Julho"  },
+                                                                new { value = "Agosto" , text = "Agosto"  },
+                                                                new { value = "Setembro" , text = "Setembro"  },
+                                                                new { value = "Outubro" , text = "Outubro"  },
+                                                                new { value = "Novembro" , text = "Novembro"  },
+                                                                new { value = "Dezembro" , text = "Dezembro"  },
+                                                }
+                                                , "value", "text", 2), "", new { @style = "width: 200px; border-radius:5px;" })
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.mes_despesa, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="input-group-addon" style="border-bottom:none; border-top:none; border-left:none; border-radius:5px;">
+                                            <label>Categoria despesa</label>
+                                            <div class="input-group" style="margin-top:2px;">
+                                                @Html.DropDownListFor(model => model.categoria_despesa, new SelectList(
+                                                new List<Object>{
+                                                   
+                                                }
+                                                , "value", "text", 2), "", new { @id = "dropmarca", @style = "width: 200px; border-radius:5px; " })
+                                            </div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.categoria_despesa, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12" style="margin-top:10px;">
+                                <div class="col-sm-2">
+                                    @if (Model.empresa == "Fisa Locadora")
+                                    {
+                                        <div class="big-box">
+                                            <img src="~/Content/fisa-logo.jpg" style="width:120px; height:95px;" class="img-rounded" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="big-box">
+                                            <img src="~/Content/fisa-consultoria.jpg" style="width:120px; height:95px;" class="img-rounded" />
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="col-sm-9" style="padding-left:0.1px;">
+                                    <div class="form-group">
+                                        <label>Empresa</label>
+                                        <div class="input-group">
+                                            @Html.DropDownListFor(model => model.empresa, new SelectList(
+                                                new List<Object>{
+                                                    new { value = "Fisa Consultoria" , text = "Fisa Consultoria"  },
+                                                   new { value = "Fisa Locadora" , text = "Fisa Locadora" },
+                                                }
+                                                , "value", "text", 2), new { @style = "width: 200px; border-radius:5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" style="padding-left:0.1px;">
+                                    <div class="form-group">
+                                        <label>Data</label>
+                                        <br />
+                                        @Html.EditorFor(model => model.data, new { htmlAttributes = new { @class = "form-control", @style = "width:120px; border-radius:5px;", Value = String.Format("{0:dd/MM/yyyy}", Model.data) } })
+                                        @Html.ValidationMessageFor(model => model.data, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-1" style="padding-left:0.1px;">
+                                    <div class="form-group">
+                                        <label>Número</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.numero, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" style="padding-left:0.1px;">
+                                    <div class="form-group">
+                                        <label>Requisitante</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.requisitante, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" style="padding-left:0.1px;">
+                                    <div class="form-group">
+                                        <label>Unidade</label>
+                                        <div class="input-group">
+                                            @Html.DropDownListFor(model => model.unidade, new SelectList(
+         new List<Object>{
+                                                   new { value = "Matriz" , text = "Matriz"  },
+                                                   new { value = "Zona Sul - SP" , text = "Zona Sul - SP" },
+                                                   new { value = "Sto André" , text = "Santo André" },
+                                                   new { value = "Zona Leste - SP" , text = "Zona Leste - SP" },
+                                                   new { value = "Aguia" , text = "Aguia" },
+                                                   new { value = "Sao Bernardo do Campo" , text = "Sao Bernardo do Campo" },
+                                                   new { value = "Maringá" , text = "Maringá" },
+                                                   new { value = "Osasco" , text = "Osasco" },
+                                                   new { value = "Sao Caetano" , text = "Sao Caetano" },
+                                                   new { value = "Londrina" , text = "Londrina" },
+                                                   new { value = "Santo Amaro" , text = "Santo Amaro" },
+                                                   new { value = "Zona Norte - SP" , text = "Zona Norte - SP" },
+                                                   new { value = "Guarulhos" , text = "Guarulhos" },
+                                                   new { value = "Ribeirão Preto" , text = "Rib Preto" },
+                                                   new { value = "Campinas" , text = "Campinas" },
+                                                   new { value = "Taboão da Serra" , text = "Taboão da Serra" },
+                                                   new { value = "Mogi das Cruzes" , text = "Mogi das Cruzes" },
+
+         }
+         , "value", "text", 2), "-- Informe a unidade --", new { @style = "width: 100%; border - radius: 5px; " })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Departamento</label>
+                                        <div class="input-group">
+                                            <div class="input-group">
+                                                @Html.DropDownListFor(model => model.departamento, new SelectList(
+                                                new List<Object>{
+                                                   new { value = "01 - Diret - Comercial" , text = "01 - Diret - Comercial"  },
+                                                   new { value = "02 - Diret - Administrativo" , text = "02 - Diret - Administrativo" },
+                                                   new {value = "03 - Diret - Operacional" , text = "03 - Diret - Operacional" },
+                                                   new { value = "20 - Oper. - Gerencia" , text = "20 - Oper. - Gerencia" },
+                                                   new { value = "21 - Oper. - Cadastro" , text = "21 - Oper. - Cadastro"  },
+                                                   new {  value = "22 - Oper. - Atendimento" , text = "22 - Oper. - Atendimento" },
+                                                   new {  value = "23 - Oper. - Atdmento Imóvel" , text = "23 - Oper. - Atdmento Imóvel"},
+                                                   new { value = "24 - Oper. - Pós Vendas" , text = "24 - Oper. - Pós Vendas" },
+                                                   new { value = "25 - Oper. - Compras" , text = "25 - Oper. - Compras" },
+                                                   new { value = "26 - Oper. - Cobrança" , text = "26 - Oper. - Cobrança" },
+                                                   new { value = "27 - Oper. - Juridico" , text = "27 - Oper. - Juridico" },
+                                                   new { value = "28 - Oper. - Ouvidoria" , text = "28 - Oper. - Ouvidoria"},
+                                                   new { value = "29 - Oper. - Assembleia" , text = "29 - Oper. - Assembleia" },
+                                                   new { value = "30 - Oper. - Recup. Cotas" , text = "30 - Oper. - Recup. Cotas"},
+                                                   new { value = "31 - Oper. - Adm. Grupos" , text = "31 - Oper. - Adm. Grupos" },
+                                                   new { value = "50 - Admin. - Gerencia" , text = "50 - Admin. - Gerencia" },
+                                                   new { value = "51 - Admin. - Administração" , text = "51 - Admin. - Administração" },
+                                                   new { value = "52 - Admin. - Financeiro" , text = "52 - Admin. - Financeiro" },
+                                                   new { value = "53 - Admin. - Contabilidade" , text = "53 - Admin. - Contabilidade" },
+                                                   new { value = "54 - Admin. - RH" , text = "54 - Admin. - RH" },
+                                                   new { value = "55 - Admin. - TI" , text = "55 - Admin. - TI"},
+                                                   new { value = "56 - Admin. - Arquivo" , text = "56 - Admin. - Arquivo" },
+                                                   new {value = "57 - Admin. - Recepção" , text = "57 - Admin. - Recepção"},
+                                                   new { value = "58 - Admin. - Auditoria" , text = "58 - Admin. - Auditoria"}
+
+                                                }
+                                                , "value", "text", 2), "-- Informe o departamento --", new { @style = "width: 215px; border-radius:5px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <b style="color:#4784AB;">1.Despesas</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Descrição despesa</label>
+                                        <div class="input-group" style="margin-top:2px;">
+                                            @Html.DropDownListFor(Model => Model.descricao_desp1, new SelectList(
+                                                new List<Object>
+                                                {
+
+                                                }
+                                                , "value", "text", 2), "", new { @id = "dropmodelo", @style = "width: 200px; border-radius:5px; " })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Empresa</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.empresa1, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Documento</label>
+                                        <div class="input-group">
+                                            @Html.DropDownListFor(model => model.documento1, new SelectList(
+                                                new List<Object>{
+                                                   new { value = "Nota Fiscal" , text = "Nota Fiscal"  },
+                                                   new { value = "Boleto" , text = "Boleto" },
+                                                   new { value = "Recibo" , text = "Recibo" },
+
+                                                }
+                                                , "value", "text", 2), "", new { @style = "width: 150px; border-radius: 5px;" })
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-1" style="padding-left:0px;">
+                                    <div class="form-group">
+                                        <label>Número</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.numero1, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Valor</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(x => x.valor1, new { @class = "form-control mask", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Descrição despesa</label>
+                                        <div class="input-group" style="width:100%;">
+                                            @Html.TextBoxFor(model => model.descricao_desp2, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Empresa</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.empresa2, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Documento</label>
+                                        <div class="input-group">
+                                            @Html.DropDownListFor(model => model.documento2, new SelectList(
+                                                new List<Object>{
+                                                   new { value = "Nota Fiscal" , text = "Nota Fiscal"  },
+                                                   new { value = "Boleto" , text = "Boleto" },
+                                                   new { value = "Recibo" , text = "Recibo" },
+
+                                                }
+                                                , "value", "text", 2), "", new { @style = "width: 150px; border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1" style="padding-left:0px;">
+                                    <div class="form-group">
+                                        <label>Número</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.numero2, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Valor</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.valor2, new { @class = "form-control mask", @placeholder = "", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Total</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(x => x.total, new { @class = "form-control mask", @style = "border-radius: 5px;", @placeholder = "Total" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <b style="color:#4784AB;">2.Histórico</b>
+                                        <div class="input-group">
+                                            @Html.TextAreaFor(model => model.historico, new { @class = "form-control", @placeholder = "Breve relato sobre as despesas relacionadas acima", @style = "width: 500px; height: 105px; border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <span class="deduc" style="font-size:11px;">Deduções (retenção de imposto)</span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-2" style="padding-left:0.1px;">
+
+                                        <div class="form-group">
+                                            <label>ISS</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.iss, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>IRRF</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.irrf, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>PIS/PASEP</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.pis, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-1" style="padding-left:0.1px;">
+                                        <div class="form-group">
+                                            <label>COFINS</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.cofins, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1" style="padding-left:0.1px;">
+                                        <div class="form-group">
+                                            <label>CSLL</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.csll, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Outros</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.outros, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Total</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.total_deducoes, new { @class = "form-control", @placeholder = "", @style = "border-radius: 5px;" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label style="color:#4784AB;">3.Pagamento</label>
+                                        <div class="input-group">
+                                            @Html.DropDownListFor(model => model.pagamento, new SelectList(
+                                                new List<Object>{
+                                                   new { value = "Boleto Bancário" , text = "Boleto bancário"  },
+                                                   new { value = "Transf. Bancária(DOC/TED)" , text = "Transf. Bancária(DOC/TED)" },
+                                                   new { value = "Cheque Normal" , text = "Cheque Normal" },
+                                                   new { value = "Débito Cta Corrente" , text = "Débito Cta Corrente" },
+                                                   new { value = "Cartão de Crédito" , text = "Cartão de Crédito" },
+                                                }
+                                                , "value", "text", 2), "", new { @style = "width: 200px; border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9" style="padding-left:0.1px;">
+                                    <label>
+                                        Vencimentos
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-9" style="padding-left:0.1px;">
+                                    <div class="form-group" style="width:190px; float:left;">
+                                        1. @Html.EditorFor(model => model.vencimento1, new { htmlAttributes = new { @class = "form-control blank", @style = "width:130px;", Value = String.Format("{0:dd/MM/yyyy}", Model.vencimento1) } })
+                                    </div>
+
+                                    <div class="form-group" style="width:190px; float:left;">
+                                        2. @Html.EditorFor(model => model.vencimento2, new { htmlAttributes = new { @class = "form-control blank", @style = "width:130px;", Value = String.Format("{0:dd/MM/yyyy}", Model.vencimento2) } })
+                                    </div>
+
+
+                                    <div class="form-group" style="width:190px; float:left;">
+                                        3. @Html.EditorFor(model => model.vencimento3, new { htmlAttributes = new { @class = "form-control blank", @style = "width:130px;", Value = String.Format("{0:dd/MM/yyyy}", Model.vencimento3) } })
+                                    </div>
+
+                                    <div class="form-group" style="width:190px; float:left;">
+                                        4. @Html.EditorFor(model => model.vencimento4, new { htmlAttributes = new { @class = "form-control blank", @style = "width:130px;", Value = String.Format("{0:dd/MM/yyyy}", Model.vencimento4) } })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Favorecido</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.favorecido, new { @class = "form-control ", @style = "border-radius: 5px; width: 200px;" })
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-9" style="padding-left:0.1px;">
+                                    <div class="form-group">
+                                        <label>CNPJ/CPF</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.cnpj_cpf, new { @class = "form-control ", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Banco</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.banco, new { @class = "form-control ", @style = "border-radius: 5px;" })
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" style="margin-left:10px;">
+                                    <div class="form-group">
+                                        <label>Agência</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.agencia, new { @class = "form-control ", @style = "border-radius: 5px; width:90px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" style="padding-left:0px;">
+                                    <div class="form-group">
+                                        <label>Conta</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.conta, new { @class = "form-control ", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Tipo conta</label>
+                                        <div class="input-group">
+                                            @Html.DropDownListFor(model => model.corrente_ou_poup, new SelectList(
+                                                new List<Object>{
+                                                   new { value = "Conta Corrente" , text = "Conta Corrente"  },
+                                                   new { value = "Conta Poupança" , text = "Conta Poupança" }
+
+                                                }
+                                                , "value", "text", 2), "", new { @style = "width: 135px; border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" style="padding-left:0.1px;">
+                                    <div class="form-group">
+                                        <label>Valor</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.valor_pag, new { @class = "form-control ", @style = "border-radius: 5px;" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label style="font-size:9px;">Estou de acordo com as despesas acima descritas e solicito a aprovação da Diretoria para o devido pagamento das mesmas.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label style="color:#4784AB;">4.Assinaturas</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12" style="height:90px; font-size:10px;">
+                                <div class="col-sm-2">
+                                    <div class="form-group" style="border-bottom:1px solid gray; height:80px; text-align:center;">
+                                        <label>Emitente</label>
+                                        <div class="input-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group" style="border-bottom:1px solid gray; height:80px; text-align:center;">
+                                        <label>Líder Depto/Unidade</label>
+                                        <div class="input-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group" style="border-bottom:1px solid gray; height:80px; text-align:center;">
+                                        <label>Diretoria</label>
+                                        <div class="input-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group" style="border-bottom:1px solid gray; height:80px; text-align:center;">
+                                        <label>Tesouraria</label>
+                                        <div class="input-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group" style="border-bottom:1px solid gray; height:80px; text-align:center;">
+                                        <label>Financeiro</label>
+                                        <div class="input-group">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <span class="noPrint">
+                                        <input type="submit" value="Salvar" class="btn btn-default col-sm-4" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>@*panel panel default*@
+
+
+
+
+
+            </div>//div class container
+
+        }
+
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+        <!-- DataTables JavaScript -->
+        <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+
+        <!-- Custom Theme JavaScript -->
+        <script src="dist/js/sheets.js"></script>
+
+
+    </body>
+}
+
+</html>

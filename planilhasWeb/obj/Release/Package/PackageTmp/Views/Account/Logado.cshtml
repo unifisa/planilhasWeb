@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Logado";
+}
+
+
+
+@*<html class="no-js">
+@using Microsoft.AspNet.Identity
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="/css/component.css" />
+    <script src="/js/modernizr.custom.js"></script>
+
+  
+</head>
+
+<body>
+    <div class="container" style=" height:100%;">
+        <section class="color-4" style="font-family: Raleway, sans-serif;">
+            <div style="color:white; text-transform:uppercase; vertical-align:top; border-top: 1px solid;  border-bottom: 1px solid; width:300px; margin:auto; font-size:18.5px; margin-bottom:90px;">Escolha seu departamento</div>
+            <nav class="cl-effect-2">
+                @if (User.Identity.GetUserName() == "Anderson" || User.Identity.GetUserName() == "Andrei")
+                {
+                <a href="/ListaPlanilhas/ListaDiretoria"><span data-hover="Diretoria">Diretoria</span></a>}
+                else {
+                <a href="#"><span data-hover="Sem acesso"></span></a>
+                };
+                <a href="/ListaPlanilhas/ListaAtendimento"><span data-hover="Atendimento">Atendimento</span></a>
+                <a href="/ListaPlanilhas/ListaImovel"><span data-hover="Imóvel">Imóvel</span></a>
+                <a href="/ListaPlanilhas/ListaRh"><span data-hover="RH" style="width:120px;">RH</span></a>
+                <a href="/ListaPlanilhas/ListaTi"><span data-hover="Tecnologia">Tecnologia</span></a>
+                <a href="/ListaPlanilhas/ListaAuditoria"><span data-hover="Auditoria">Auditoria</span></a>
+                <a href="/ListaPlanilhas/ListaCobranca"><span data-hover="Cobrança">Cobrança</span></a>
+                <a href="/ListaPlanilhas/ListaReativacao"><span data-hover="Reativação">Reativação</span></a>
+                <a href="/ListaPlanilhas/ListaOperacoes"><span data-hover="Operações">Operações</span></a>
+                <a href="/ListaPlanilhas/ListaContabilidade"><span data-hover="Contabilidade">Contabilidade</span></a>
+                <a href="/ListaPlanilhas/ListaCompras"><span data-hover="Compras">Compras</span></a>
+                <a href="/ListaPlanilhas/ListaFinanceiro"><span data-hover="Financeiro">Financeiro</span></a>
+                <a href="/ListaPlanilhas/ListaCadastro"><span data-hover="Cadastro">Cadastro</span></a>
+                <a href="/ListaPlanilhas/ListaJuridico"><span data-hover="Jurídico">Jurídico</span></a>
+            </nav>
+        </section>
+    </div>
+</body>
+        }
+</html>*@

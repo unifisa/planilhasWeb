@@ -1,0 +1,223 @@
+﻿
+@model IEnumerable<Planilhas.Models.Calc_Rateio>
+<h4>
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    @{
+        ViewBag.Title = "ListaDiretoria";
+    }
+
+</h4>
+@section scripts {
+
+  <script type="text/javascript" src="http://jqwidgets.com/jquery-widgets-demo/scripts/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jqx-all.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxgrid.filter.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxgrid.columnsresize.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxgrid.columnsreorder.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxgrid.edit.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxgrid.sort.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxdatetimeinput.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxcalendar.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxtooltip.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxdatetimeinput.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxmenu.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxlistbox.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxscrollbar.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxbuttons.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxdata.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxcore.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxgrid.selection.js"></script>
+
+<script type="text/javascript" src="~/Scripts/globalization/globalize.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxcalendar.js"></script>
+
+<script type="text/javascript" src="~/Scripts/jqxgrid.pager.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxdatetimeinput.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxdata.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxdata.export.js"></script>
+<script type="text/javascript" src="~/Scripts/LocalizationObj.js"></script>
+<script type="text/javascript" src="~/Scripts/buttons.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="/jqwidgets/styles/jqx.base.css" />
+<link rel="stylesheet" href="/jqwidgets/styles/jqx.energyblue.css" type="text/css" />
+<style type="text/css">
+</style>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+
+        var source =
+               {
+                   datatype: "json",
+                   datafields: [
+                        { name: 'ID', type: 'number' },
+                        { name: 'cliente', type: 'string' },
+                        { name: 'cota', type: 'number' },
+                        { name: 'grupo', type: 'number' },
+                        { name: 'contrato', type: 'number' },
+                        { name: 'usuario', type: 'string' },
+                        { name: 'alteracao', type: 'date' },
+
+                   ],
+                   id: 'ID',
+                   url: '/Listar_CR/GetListar/',
+
+
+
+                   filter: function () {
+                       // update the grid and send a request to the server.
+                       $("#jqxgrid").jqxGrid('updatebounddata', 'filter');
+                   },
+                   sort: function () {
+                       // update the grid and send a request to the server.
+                       $("#jqxgrid").jqxGrid('updatebounddata', 'sort');
+
+                   },
+
+                   root: 'Rows',
+                   beforeprocessing: function (data) {
+                       source.totalrecords = data.TotalRows;
+                   }
+               };
+
+
+
+
+        var columnsrenderer = function (value) {
+            return '<div style="text-align: center; margin-top: 5px;">' + value + '</div>';
+        };
+
+
+
+        var dataadapter = new $.jqx.dataAdapter(source, {
+            loadError: function (xhr, status, error) {
+                alert(error);
+            }
+        });
+
+
+
+        $("#jqxgrid").jqxGrid(
+                 {
+                     width: 1140,
+                     height: 348,
+                     source: dataadapter,
+                     sortable: true,
+                     filterable: true,
+                     selectionmode: 'singlerow',
+                     pageable: true,
+                     virtualmode: true,
+                     theme: 'energyblue',
+                     //mudando o nome do meu filtro para portugues
+                     ready: function () {
+                         $("#jqxgrid").jqxGrid('localizestrings', localizationobj);
+
+                     },
+                     rendergridrows: function (obj) {
+                         return obj.data;
+                     },
+
+
+                    columns: [
+                        { text: "Id", datafield: "ID", cellsalign: 'center', cellsformat: 'd', width: 50, renderer: columnsrenderer },
+                        { text: "Cliente", datafield: "cliente", cellsalign: 'center', width: 370, renderer: columnsrenderer },
+                        { text: "Grupo", datafield: "grupo", cellsalign: 'center', cellsformat: 'N', width: 80, renderer: columnsrenderer },
+                        { text: "Cota", datafield: "cota", cellsalign: 'center', cellsformat: 'N', width: 80, renderer: columnsrenderer },
+                        { text: "Contrato", datafield: "contrato", cellsalign: 'center', cellsformat: 'N', width: 100, renderer: columnsrenderer },
+                        { text: "Usuario", datafield: "usuario", cellsalign: 'center', width: 100, renderer: columnsrenderer },
+                        {
+                            text: "Data de Alteração", datafield: "alteracao", cellsalign: 'center', width: 170, renderer: columnsrenderer, cellsformat: 'dd/MM/yyyy HH:mm:ss', filtertype: "date", createfilterwidget: function (column, columnElement, widget) {
+                                $(widget).jqxDateTimeInput({ formatString: 'dd/MM/yyyy' });
+                            }
+                        },
+                       {
+                           text: "Ver", width: 63, renderer: columnsrenderer, filterable: false, sortable: false, columntype: 'button',
+                           cellsrenderer: function () {
+                               return "Ver";
+                               //função ao clicar no botao
+                           }, buttonclick: function (row) {
+                               var rowindex = $('#jqxgrid').jqxGrid('getselectedrowindex');
+                               var dados = $('#jqxgrid').jqxGrid('getrowdata', rowindex);
+                               var rowid = dados.ID;
+                               var ID = rowid;
+                               window.location = "@Url.Action("Details/", "Listar_CR")" + ID;
+
+                           }
+
+                       },
+                    {
+                        text: "Editar", width: 63, renderer: columnsrenderer, filterable: false, sortable: false, columntype: 'button',
+                        cellsrenderer: function () {
+                            return "Editar";
+                        }, buttonclick: function (row) {
+                            var rowindex = $('#jqxgrid').jqxGrid('getselectedrowindex');
+                            var dados = $('#jqxgrid').jqxGrid('getrowdata', rowindex);
+                            var rowid = dados.ID;
+                            var ID = rowid;
+                            window.location = "@Url.Action("Edit/", "Listar_CR")" + ID;
+
+                        }
+
+                    },
+                    {
+                        text: "Excluir", width: 64, renderer: columnsrenderer, filterable: false, sortable: false, columntype: 'button',
+                        cellsrenderer: function () {
+                            return "Excluir";
+                        }, buttonclick: function (row) {
+                            var rowindex = $('#jqxgrid').jqxGrid('getselectedrowindex');
+                            var dados = $('#jqxgrid').jqxGrid('getrowdata', rowindex);
+                            var rowid = dados.ID;
+                            var ID = rowid;
+                            window.location = "@Url.Action("Delete/", "Listar_CR")" + ID;
+
+                        }
+
+                    },
+                    ],
+                }
+                    )
+
+        });
+
+
+    </script>
+}
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/Lista.css" type="text/css" />
+</head>
+@if (Request.IsAuthenticated && @ViewBag.title != "Login")
+{
+    <body>
+        <div id="criarPla">
+            <a href="/Listar_CR/Create"><i class="glyphicon glyphicon-plus" title="Criar planilha"></i></a>
+            <span class="nome" style="color:#4784AB; font-family:'Lucida Sans'; margin-left:10px;">Calculo Rateio sem Adesão / Rateio sem Adesão</span>
+        </div>
+        <div id="jqxgrid" style="font-size: 13px; font-family: Verdana; height:400px; width:1140px; background-color:white">
+
+        </div>
+        
+        <div id='grid-panel' class='scroll' style="margin-top:10px;">
+            <input type="button" value="Exportar para PDF" id='pdfExport' />
+            <input type="button" value="Imprimir" id='print' />
+        </div>
+
+        <div style='margin-top: 20px;'>
+            <div style='float: left;'>
+                <div style='margin-left: 10px; float: left;'>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+}
+</html>

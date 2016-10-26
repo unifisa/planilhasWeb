@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "RoleCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <style>
+        .cor-conteudo {
+            color: black;
+        }
+    </style>
+}
+<p>&nbsp;</p>
+<div class="cor-conteudo">
+    <div class="spacerBody" style="padding-bottom:165px; padding-left:35px;">
+        <p>&nbsp;</p>
+        @Html.ActionLink("Ver grupos", "RoleIndex") | @Html.ActionLink("Adicionar usuário a um grupo", "RoleAddToUser")
+        <h2>Criar grupo</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div>
+                Nome do grupo
+            </div>
+            <br />
+            <p>
+                @Html.TextBox("RoleName")
+            </p>
+            <input type="submit" value="Salvar" />
+            <p>&nbsp;</p>
+            <div class="message-success">@ViewBag.ResultMessage</div>
+        }
+    </div>
+</div>

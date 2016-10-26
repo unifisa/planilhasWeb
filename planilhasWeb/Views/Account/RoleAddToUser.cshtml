@@ -1,0 +1,164 @@
+﻿
+@section scripts{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    @Styles.Render("~/Content/themes/base/css")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#UserName").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Account/AutoComplete",
+                        type: "POST",
+                        dataType: "json",
+                        data: { term: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                
+                                return { label: (item.Usuario), value: (item.Usuario) };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "", results: ""
+                }
+            });
+        })
+
+        $(document).ready(function () {
+            $("#user").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Account/AutoComplete2",
+                        type: "POST",
+                        dataType: "json",
+                        data: { term: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: (item.Nome + " " + item.Sobrenome), value: (item.Nome + " " + item.Sobrenome) };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "", results: ""
+                }
+            });
+        })
+     
+
+    </script>
+}
+
+
+@{
+    ViewBag.Title = "Role Add To User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    <style>
+        .cor-conteudo {
+            color: black;
+           
+        }
+        .cor-conteudo h3{
+            color:black;
+            padding-left:unset;
+            }
+
+        button, html input[type="button"],
+        input[type="reset"], input[type="submit"] {
+            cursor: pointer;
+            -webkit-appearance: button;
+            background-color: #117fc5;
+            color: white;
+            border-color: dodgerblue;
+        }
+
+        select{
+            width:145px;
+        }
+        
+    </style>
+}
+<p>&nbsp;</p>
+<div class="cor-conteudo">
+    <div class="spacerBody" style="padding:20px; margin-bottom:90px;">
+        
+        @Html.ActionLink("Criar novo grupo", "RoleCreate") | @Html.ActionLink("Ver Grupos", "RoleIndex")
+
+        <h3>Adicionar Usuário ao Grupo </h3>
+
+
+        @using (Html.BeginForm("RoleAddToUser", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="message-success">@ViewBag.ResultMessage</div>
+            <p>
+                <span style="padding-right:15px;">
+                    
+                    Nome de usuário: @Html.TextBox("UserName")
+                    </span>
+                <span style="padding-right:15px;">
+                    Nome : @Html.TextBox("user")
+                    </span>
+                    Nome do grupo: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
+
+                    <input type="submit" value="Salvar" />
+</p>
+
+            
+        }
+        <p>&nbsp;</p>
+        
+
+
+    <div class="hr"></div>
+        <h4>Ver os grupos deste usuário </h4>
+        @using (Html.BeginForm("GetRoles", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                Usuário : @Html.TextBox("UserName")
+                <input type="submit" value="Ver" style="margin-left:10px;" />
+            </p>
+        }
+
+        @if (ViewBag.RolesForThisUser != null)
+        {
+            <text>
+                <h3>Grupos deste usuário </h3>
+                <ol>
+                    @foreach (string s in ViewBag.RolesForThisUser)
+                {
+                        <li>@s</li>
+                    }
+                </ol>
+            </text>          
+        } 
+
+
+        <h3>Excluir usuário de um grupo</h3>
+
+        @using (Html.BeginForm("DeleteRoleForUser", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <p>
+                @*Name : @Html.TextBox("User")*@
+                Usuário : @Html.TextBox("UserName")
+                <span style="padding-left:15px;">Nome do grupo: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)</span>
+
+            </p>
+
+            <input type="submit" value="Excluir" />
+        }
+    </div>
+   
+    </div>

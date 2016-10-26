@@ -1,0 +1,193 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SIG - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+
+    
+</head>
+<body>
+
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*@Html.ActionLink("POC - Planilhas", "Login", new { area = "" }, new { @class = "navbar-brand" })*@
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                @*<li>@Html.ActionLink("Planilha", "Index", "Planilha")</li>*@
+            </ul>
+            @Html.Partial("_LoginPartial")
+    
+        </div>
+
+
+        @if (Request.IsAuthenticated && @ViewBag.title != "Login" && ViewBag.title != "Register")
+        {
+            <ul class="nav navbar-nav navbar-left" style="height:auto;">
+
+                @if (ViewBag.title == "Logado" || ViewBag.title == "Semacesso")
+                {
+                                       
+                <li>@Html.ActionLink("Diretoria", "ListaDiretoria", "ListaPlanilhas")</li>
+                                        
+                <li>@Html.ActionLink("Atendimento", "ListaAtendimento", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Imóvel", "ListaImovel", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("RH", "ListaRh", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("TI", "ListaTi", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Auditoria", "ListaAuditoria", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Cobrança", "ListaCobranca", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Reativação", "ListaReativacao", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Operações", "ListaOperacoes", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Contabilidade", "ListaContabilidade", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Compras", "ListaCompras", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Financeiro", "ListaFinanceiro", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Cadastro", "ListaCadastro", "ListaPlanilhas")</li>
+
+                <li>@Html.ActionLink("Jurídico", "ListaJuridico", "ListaPlanilhas")</li>
+                }
+
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaDiretoria")
+                {
+                    <li style="font-size:20px;">@Html.ActionLink("Diretoria", "ListaDiretoria", "ListaPlanilhas")</li>
+                }
+
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaAtendimento")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Atendimento", "ListaAtendimento", "ListaPlanilhas")</li>
+                }
+                
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaImovel")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Imóvel", "ListaImovel", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaRh")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("RH", "ListaRh", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaTi")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("TI", "ListaTi", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaAuditoria")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Auditoria", "ListaAuditoria", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaCobranca")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Cobrança", "ListaCobranca", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaReativacao")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Reativação", "ListaReativacao", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaOperacoes")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Operações", "ListaOperacoes", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaContabilidade")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Contabilidade", "ListaContabilidade", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaCompras")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Compras", "ListaCompras", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaFinanceiro")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Financeiro", "ListaFinanceiro", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaCadastro")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Cadastro", "ListaCadastro", "ListaPlanilhas")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaJuridico")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Jurídico", "ListaJuridico", "ListaPlanilhas")</li>
+                }
+
+                @if (ViewBag.title != "Logado" && ViewBag.title == "Alterar a Senha")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Altere sua senha", "AlterarSenha", "Senha")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "Listagem de grupos")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Listagem de grupos", "RoleIndex", "Account")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "RoleCreate")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Grupos", "RoleCreate", "Account")</li>
+                }
+                @if (ViewBag.title != "Logado" && ViewBag.title == "Role Add To User")
+                {
+                    <li style="font-size:18px;">@Html.ActionLink("Grupos", "RoleAddToUser", "Account")</li>
+                }
+            </ul>
+        }
+
+    </div>
+
+    <div class="container body-content">
+
+
+        @*@if (Request.IsAuthenticated && ViewBag.title != "Login")
+            {
+
+                <ul class="pesquisa-menu-pai">
+
+                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Cliente" class="btn-default" /></li>
+                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Cota" class="btn-default" /></li>
+                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Grupo" class="btn-default" /></li>
+                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Contrato" class="btn-default" /></li>
+                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Planilha" class="btn-default" /></li>
+
+                </ul>
+            }*@
+
+        @RenderBody()
+
+
+    </div>
+
+    <div class="noPrint">
+        <div class="div-footer">
+
+            <p>
+                
+                @if(ViewBag.title != "Login") {
+                <img src="~/Content/sig-logo.png" title="SIG" />
+                }
+                Copyright &copy; @DateTime.Now.Year - Dep. Tecnologia Unifisa
+            </p>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqwidgets")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+   
+</body>
+</html>
