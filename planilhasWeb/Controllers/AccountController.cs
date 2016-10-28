@@ -294,12 +294,12 @@ namespace Planilhas.Controllers
         }
 
         [HttpPost]
-        public JsonResult AutocompletenoClick(string term, string UserName)
+        public JsonResult AutocompletenoClick(string term)
         {
-            string query = Request.Form["UserName"];
+
             var result = (from r in db.userAccount
-                          where r.Usuario == query
-                          select new { r.Nome, r.Sobrenome }).Distinct();
+                          where r.Usuario == term
+                          select new { r.Nome }).Distinct();
             return Json(result, JsonRequestBehavior.AllowGet);
 
         }
