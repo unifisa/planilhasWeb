@@ -60,7 +60,7 @@
                         @Html.LabelFor(model => model.Departamentos, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10 left-addon">
 
-                            @Html.DropDownList("Departamentos", ViewData["departamentos"] as List<SelectListItem>, "-- Escolha o departamento --")
+                            @Html.DropDownList("Departamentos", ViewData["departamentos"] as List<SelectListItem>, "")
                             @Html.ValidationMessageFor(model => model.Departamentos)
 
                         </div>

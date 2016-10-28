@@ -189,6 +189,11 @@ namespace Planilhas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RoleCreate(string RoleName)
         {
+            if ((Request.Form["RoleName"]) == "")
+            {
+                ViewBag.ResultMessage = "Não deixe o campo vazio!";
+                return View();
+            }
 
             if (Roles.RoleExists(RoleName))
             {
@@ -248,15 +253,20 @@ namespace Planilhas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RoleAddToUser(string RoleName, string UserName)
         {
+            if ((Request.Form["UserName"]) == "" || (Request.Form["RoleName"]) == "")
+            {
+                ViewBag.ResultMessage = "Não deixe o campo vazio!";
+                return View();
+            }
 
             if (Roles.IsUserInRole(UserName, RoleName))
             {
-                ViewBag.ResultMessage = "Este usuário ja pertence a esse grupo !";
+                ViewBag.ResultMessage = "Este usuário ja pertence a esse grupo!";
             }
             else
             {
                 Roles.AddUserToRole(UserName, RoleName);
-                ViewBag.ResultMessage = "Usuario adicionado ao grupo com sucesso !";
+                ViewBag.ResultMessage = "Usuário adicionado ao grupo com sucesso!";
             }
 
             SelectList list = new SelectList(Roles.GetAllRoles());
@@ -282,6 +292,18 @@ namespace Planilhas.Controllers
             }
             return View("RoleAddToUser");
         }
+
+        [HttpPost]
+        public JsonResult AutocompletenoClick(string term, string UserName)
+        {
+            string query = Request.Form["UserName"];
+            var result = (from r in db.userAccount
+                          where r.Usuario == query
+                          select new { r.Nome, r.Sobrenome }).Distinct();
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
 
         [HttpPost]
         public JsonResult Autocomplete(string term)

@@ -3,8 +3,11 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
     @Styles.Render("~/Content/themes/base/css")
+    
+
     <script type="text/javascript">
-        $(document).ready(function () {
+
+       $(document).ready(function () {
             $("#UserName").autocomplete({
                 source: function (request, response) {
                     $.ajax({
@@ -27,17 +30,18 @@
             });
         })
 
-        $(document).ready(function () {
+         $(document).ready(function () {
             $("#user").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: "/Account/AutoComplete2",
+                        url: "/Account/AutocompletenoClick",
                         type: "POST",
                         dataType: "json",
                         data: { term: request.term },
                         success: function (data) {
                             response($.map(data, function (item) {
-                                return { label: (item.Nome + " " + item.Sobrenome), value: (item.Nome + " " + item.Sobrenome) };
+
+                                return { label: (item.Nome, item.Sobrenome), value: (item.Nome, item.Sobrenome) };
                             }))
 
                         }
@@ -60,6 +64,16 @@
 
 
     <style>
+        .spacerBody{
+            font-family:'Montserrat';
+            font-size:18px;
+        }
+
+        select{
+            font-family:'Montserrat';
+            font-size:17px;
+        }
+
         .cor-conteudo {
             color: black;
            
@@ -67,7 +81,10 @@
         .cor-conteudo h3{
             color:black;
             padding-left:unset;
+            font-family:'Montserrat';
+            
             }
+
 
         button, html input[type="button"],
         input[type="reset"], input[type="submit"] {
@@ -88,38 +105,40 @@
 <div class="cor-conteudo">
     <div class="spacerBody" style="padding:20px; margin-bottom:90px;">
         
-        @Html.ActionLink("Criar novo grupo", "RoleCreate") | @Html.ActionLink("Ver Grupos", "RoleIndex")
+        @Html.ActionLink("Criar novo grupo", "RoleCreate") | @Html.ActionLink("Ver Grupos", "RoleIndex") 
+        <div class="message-success" style="text-align:center; margin-top:0px;">@ViewBag.ResultMessage</div>
 
         <h3>Adicionar Usuário ao Grupo </h3>
 
 
-        @using (Html.BeginForm("RoleAddToUser", "Account"))
+        @using (Html.BeginForm("RoleAddToUser", "Account", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
 
-            <div class="message-success">@ViewBag.ResultMessage</div>
-            <p>
-                <span style="padding-right:15px;">
-                    
-                    Nome de usuário: @Html.TextBox("UserName")
+            <form method="post">
+                <p>
+                    <span style="padding-right:15px;">
+
+                        Nome de usuário: @Html.TextBox("UserName")
                     </span>
-                <span style="padding-right:15px;">
-                    Nome : @Html.TextBox("user")
+                    <span style="padding-right:15px;">
+                        Nome : @Html.TextBox("user")
                     </span>
-                    Nome do grupo: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
+                    <span style="padding-right:15px;">
+                        Nome do grupo: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
+                    </span>
 
                     <input type="submit" value="Salvar" />
-</p>
-
-            
+                </p>  
+                    </form>
+          
         }
-        <p>&nbsp;</p>
-        
+         
 
 
     <div class="hr"></div>
-        <h4>Ver os grupos deste usuário </h4>
+        <h3>Ver os grupos deste usuário </h3>
         @using (Html.BeginForm("GetRoles", "Account"))
         {
             @Html.AntiForgeryToken()
