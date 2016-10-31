@@ -30,28 +30,29 @@
             });
         })
 
-         $(document).ready(function () {
-            $("#user").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        url: "/Account/AutocompletenoClick",
-                        type: "POST",
-                        dataType: "json",
-                        data: { term: $('#UserName').val()},
-                        success: function (data) {
-                            response($.map(data, function (item) {
+       $(document).ready(function () {
+           $("#user").autocomplete({
+               source: function (request, response) {
+                   $.ajax({
+                       url: "/Account/AutocompletenoClick",
+                       type: "POST",
+                       dataType: "json",
+                       data: { term: $('#UserName').val() },
+                       
+                       success: function (term) {
+                           response($.map(term, function (item) {
 
-                                return { label: (item.Nome, item.Sobrenome), value: (item.Nome, item.Sobrenome) };
-                            }))
+                               return { label: (item.Nome + " " + item.Sobrenome), value: (item.Nome + " " + item.Sobrenome) };
+                           }))
 
-                        }
-                    })
-                },
-                messages: {
-                    noResults: "", results: ""
-                }
-            });
-        })
+                       }
+                   })
+               },
+               messages: {
+                   noResults: "", results: ""
+               }
+           });
+       })
      
 
     </script>

@@ -297,9 +297,9 @@ namespace Planilhas.Controllers
         public JsonResult AutocompletenoClick(string term)
         {
 
-            var result = (from r in db.userAccount
+            var result = from r in db.userAccount
                           where r.Usuario == term
-                          select new { r.Nome }).Distinct();
+                          select new { r.Nome, r.Sobrenome };
             return Json(result, JsonRequestBehavior.AllowGet);
 
         }
