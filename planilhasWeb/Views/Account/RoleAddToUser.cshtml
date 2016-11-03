@@ -31,27 +31,43 @@
         })
 
        $(document).ready(function () {
-           $("#user").autocomplete({
-               source: function (request, response) {
-                   $.ajax({
-                       url: "/Account/AutocompletenoClick",
-                       type: "POST",
-                       dataType: "json",
-                       data: { term: $('#UserName').val() },
-                       
-                       success: function (term) {
-                           response($.map(term, function (item) {
+           $("#UserName").bind({
+                             
+           }).blur(function (request, response) {
+               $.ajax({
+                   url: "/Account/AutocompletenoClick",
+                   type: "POST",
+                   dataType: "json",
+                   data: { term: $('#UserName').val() },
 
-                               return { label: (item.Nome + " " + item.Sobrenome), value: (item.Nome + " " + item.Sobrenome) };
-                           }))
+                   success: function (term) {
+                       response($.map(term, function (item) {
 
-                       }
-                   })
-               },
-               messages: {
-                   noResults: "", results: ""
-               }
-           });
+                           
+                           $("#user").val(item["Nome"] + " " + item["Sobrenome"]);
+                       }))
+
+                   }
+               })
+                      
+           }).blur(function (request, response) {
+               $.ajax({
+                   url: "/Account/BindDepartamento",
+                   type: "POST",
+                   dataType: "json",
+                   data: { term: $('#UserName').val() },
+
+                   success: function (term) {
+                       response($.map(term, function (item) {
+
+                            
+                           $("#departamento").val(item["Departamentos"]);
+                       }))
+
+                   }
+               })
+          
+           })
        })
      
 
@@ -65,15 +81,31 @@
 
 
     <style>
+
         .spacerBody{
-            font-family:'Montserrat';
-            font-size:18px;
+            font-family:'Montserrat', sans-serif;
+            font-size:16px;
+            height:auto;
         }
 
-        select{
-            font-family:'Montserrat';
-            font-size:17px;
+        input {
+            height: 35px;
+            padding: 5px;
+            border: 1px solid rgba(171, 220, 218, 0.92);
+            box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+            -webkit-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
         }
+
+        select {
+            font-family: 'Montserrat';
+            font-size: 17px;
+            width: 145px;
+            height: 35px;
+            border: 1px solid rgba(171, 220, 218, 0.92);
+            box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+            -webkit-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+        }
+        
 
         .cor-conteudo {
             color: black;
@@ -94,11 +126,9 @@
             background-color: #117fc5;
             color: white;
             border-color: dodgerblue;
+            
         }
 
-        select{
-            width:145px;
-        }
         
     </style>
 }
@@ -109,76 +139,95 @@
         @Html.ActionLink("Criar novo grupo", "RoleCreate") | @Html.ActionLink("Ver Grupos", "RoleIndex") 
         <div class="message-success" style="text-align:center; margin-top:0px;">@ViewBag.ResultMessage</div>
 
-        <h3>Adicionar Usuário ao Grupo </h3>
+        
+
+        <div class="col-lg-12" style="height:100px; margin-top:30px;">
+            <h4>Adicionar Usuário a um Grupo </h4>
+            @using (Html.BeginForm("RoleAddToUser", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
 
 
-        @using (Html.BeginForm("RoleAddToUser", "Account", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
 
-            <form method="post">
-                <p>
-                    <span style="padding-right:15px;">
+                <span style="padding-right:15px; float:left;">
 
-                        Nome de usuário: @Html.TextBox("UserName")
+                    Nome de usuário<br /> @Html.TextBox("UserName")
+                </span>
+
+                    <span id="show" style="padding-right:15px; float:left;">
+                        Nome <br /> <input type="text" id="user" readonly  />
                     </span>
-                    <span style="padding-right:15px;">
-                        Nome : @Html.TextBox("user")
-                    </span>
-                    <span style="padding-right:15px;">
-                        Nome do grupo: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
+                    <span id="show2" style="padding-right:15px; float:left;">
+                        Departamento <br /> <input type="text" id="departamento" readonly  />
                     </span>
 
-                    <input type="submit" value="Salvar" />
-                </p>  
-                    </form>
-          
-        }
-         
+                    <span style="padding-right:15px; float:left;">
+                        Nome do grupo<br /> @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
+                    </span>
+                    <span style="padding-right:15px; float:left;">
+                        <br />
+                        <input type="submit" value="Salvar" style="float:left; clear:both;" />
+
+                    </span>
+            }
+        </div>
 
 
-    <div class="hr"></div>
-        <h3>Ver os grupos deste usuário </h3>
-        @using (Html.BeginForm("GetRoles", "Account"))
-        {
-            @Html.AntiForgeryToken()
-            <p>
-                Usuário : @Html.TextBox("UserName")
-                <input type="submit" value="Ver" style="margin-left:10px;" />
-            </p>
-        }
+        <div class="col-lg-12">
+            <h4>Ver os grupos deste usuário </h4>
+            @using (Html.BeginForm("GetRoles", "Account"))
+            {
+                <text>
 
+
+                    @Html.AntiForgeryToken()
+
+                    Usuário : @Html.TextBox("UserName")
+                    <input type="submit" value="Ver" style="margin-left:10px; width:50px;" />
+                </text>
+            }
+             
+            </div>
+        
+       
         @if (ViewBag.RolesForThisUser != null)
-        {
-            <text>
-                <h3>Grupos deste usuário </h3>
-                <ol>
-                    @foreach (string s in ViewBag.RolesForThisUser)
+            {
+           
+            <div class="col-lg-12" style="height:80px; padding-top:20px;">
+                <text>
+                    <h4>Grupos deste usuário </h4>
+                    <ol>
+                        @foreach (string s in ViewBag.RolesForThisUser)
                 {
-                        <li>@s</li>
-                    }
-                </ol>
-            </text>          
-        } 
-
-
-        <h3>Excluir usuário de um grupo</h3>
-
-        @using (Html.BeginForm("DeleteRoleForUser", "Account"))
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
-
-            <p>
-                @*Name : @Html.TextBox("User")*@
-                Usuário : @Html.TextBox("UserName")
-                <span style="padding-left:15px;">Nome do grupo: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)</span>
-
-            </p>
-
-            <input type="submit" value="Excluir" />
+                            <li style="list-style-type:circle">@s</li>
+                        }
+                    </ol>
+                </text>
+            </div>
+            
         }
-    </div>
+               
+        
+
+        <div class="col-lg-12" style="height:80px; margin-top:30px;">
+            <h4>Excluir usuário de um grupo</h4>
+
+            @using (Html.BeginForm("DeleteRoleForUser", "Account"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <p>
+                    @*Name : @Html.TextBox("User")*@
+                    Usuário : @Html.TextBox("UserName")
+                    <span style="padding-left:15px; margin-right:10px;">Nome do grupo: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)</span>
+                    <input type="submit" value="Excluir" />
+                </p>
+
+               
+            }
+            </div>
+        </div>
    
     </div>

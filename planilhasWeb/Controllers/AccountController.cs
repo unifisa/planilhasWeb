@@ -304,6 +304,17 @@ namespace Planilhas.Controllers
 
         }
 
+        [HttpPost]
+        public JsonResult BindDepartamento(string term)
+        {
+
+            var result = from r in db.userAccount
+                         where r.Usuario == term
+                         select new { r.Departamentos };
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
 
         [HttpPost]
         public JsonResult Autocomplete(string term)
