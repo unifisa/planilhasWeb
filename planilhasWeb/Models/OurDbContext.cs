@@ -34,6 +34,8 @@ namespace Planilhas.Models
 
         public DbSet<Unidades> Unidades { get; set; }
 
+        public DbSet<Departamentos> Departamentos { get; set; }
+
 
 
 

@@ -3,11 +3,11 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
     @Styles.Render("~/Content/themes/base/css")
-    
+
 
     <script type="text/javascript">
 
-       $(document).ready(function () {
+        $(document).ready(function () {
             $("#UserName").autocomplete({
                 source: function (request, response) {
                     $.ajax({
@@ -17,7 +17,7 @@
                         data: { term: request.term },
                         success: function (data) {
                             response($.map(data, function (item) {
-                                
+
                                 return { label: (item.Usuario), value: (item.Usuario) };
                             }))
 
@@ -30,46 +30,46 @@
             });
         })
 
-       $(document).ready(function () {
-           $("#UserName").bind({
-                             
-           }).blur(function (request, response) {
-               $.ajax({
-                   url: "/Account/AutocompletenoClick",
-                   type: "POST",
-                   dataType: "json",
-                   data: { term: $('#UserName').val() },
+        $(document).ready(function () {
+            $("#UserName").bind({
 
-                   success: function (term) {
-                       response($.map(term, function (item) {
+            }).blur(function (request, response) {
+                $.ajax({
+                    url: "/Account/AutocompletenoClick",
+                    type: "POST",
+                    dataType: "json",
+                    data: { term: $('#UserName').val() },
 
-                           
-                           $("#user").val(item["Nome"] + " " + item["Sobrenome"]);
-                       }))
+                    success: function (term) {
+                        response($.map(term, function (item) {
 
-                   }
-               })
-                      
-           }).blur(function (request, response) {
-               $.ajax({
-                   url: "/Account/BindDepartamento",
-                   type: "POST",
-                   dataType: "json",
-                   data: { term: $('#UserName').val() },
 
-                   success: function (term) {
-                       response($.map(term, function (item) {
+                            $("#user").val(item["Nome"] + " " + item["Sobrenome"]);
+                        }))
 
-                            
-                           $("#departamento").val(item["Departamentos"]);
-                       }))
+                    }
+                })
 
-                   }
-               })
-          
-           })
-       })
-     
+            }).blur(function (request, response) {
+                $.ajax({
+                    url: "/Account/BindDepartamento",
+                    type: "POST",
+                    dataType: "json",
+                    data: { term: $('#UserName').val() },
+
+                    success: function (term) {
+                        response($.map(term, function (item) {
+
+
+                            $("#departamento").val(item["Departamentos"]);
+                        }))
+
+                    }
+                })
+
+            })
+        })
+
 
     </script>
 }
@@ -81,11 +81,10 @@
 
 
     <style>
-
-        .spacerBody{
-            font-family:'Montserrat', sans-serif;
-            font-size:16px;
-            height:auto;
+        .spacerBody {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            height: auto;
         }
 
         input {
@@ -98,6 +97,7 @@
 
         select {
             font-family: 'Montserrat';
+            text-align: right;
             font-size: 17px;
             width: 145px;
             height: 35px;
@@ -105,17 +105,21 @@
             box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
             -webkit-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
         }
-        
+
+            select:hover {
+                box-shadow: 0px 0px 9px 1px rgba(0, 157, 157, 0.45);
+                -moz-box-shadow: 0px 0px 9px 1px rgba(0, 157, 157, 0.45);
+                -webkit-box-shadow: 0px 0px 9px 1px rgba(0, 157, 157, 0.45);
+            }
 
         .cor-conteudo {
             color: black;
-           
         }
-        .cor-conteudo h3{
-            color:black;
-            padding-left:unset;
-            font-family:'Montserrat';
-            
+
+            .cor-conteudo h3 {
+                color: black;
+                padding-left: unset;
+                font-family: 'Montserrat';
             }
 
 
@@ -126,20 +130,17 @@
             background-color: #117fc5;
             color: white;
             border-color: dodgerblue;
-            
         }
-
-        
     </style>
 }
 <p>&nbsp;</p>
 <div class="cor-conteudo">
     <div class="spacerBody" style="padding:20px; margin-bottom:90px;">
-        
-        @Html.ActionLink("Criar novo grupo", "RoleCreate") | @Html.ActionLink("Ver Grupos", "RoleIndex") 
+
+        @Html.ActionLink("Criar novo grupo", "RoleCreate") | @Html.ActionLink("Ver Grupos", "RoleIndex")
         <div class="message-success" style="text-align:center; margin-top:0px;">@ViewBag.ResultMessage</div>
 
-        
+
 
         <div class="col-lg-12" style="height:100px; margin-top:30px;">
             <h4>Adicionar Usuário a um Grupo </h4>
@@ -155,16 +156,16 @@
                     Nome de usuário<br /> @Html.TextBox("UserName")
                 </span>
 
-                    <span id="show" style="padding-right:15px; float:left;">
-                        Nome <br /> <input type="text" id="user" readonly  />
-                    </span>
-                    <span id="show2" style="padding-right:15px; float:left;">
-                        Departamento <br /> <input type="text" id="departamento" readonly  />
-                    </span>
+                <span id="show" style="padding-right:15px; float:left;">
+                    Nome <br /> <input type="text" id="user" readonly />
+                </span>
+                <span id="show2" style="padding-right:15px; float:left;">
+                    Departamento <br /> <input type="text" id="departamento" readonly />
+                </span>
 
-                    <span style="padding-right:15px; float:left;">
-                        Nome do grupo<br /> @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
-                    </span>
+                <span style="padding-right:15px; float:left;">
+                    Nome do grupo<br /> @Html.DropDownList("RoleName", ViewBag.NomeRegra as SelectList)
+                </span>
                     <span style="padding-right:15px; float:left;">
                         <br />
                         <input type="submit" value="Salvar" style="float:left; clear:both;" />
@@ -187,13 +188,13 @@
                     <input type="submit" value="Ver" style="margin-left:10px; width:50px;" />
                 </text>
             }
-             
-            </div>
-        
-       
+
+        </div>
+
+
         @if (ViewBag.RolesForThisUser != null)
-            {
-           
+        {
+
             <div class="col-lg-12" style="height:80px; padding-top:20px;">
                 <text>
                     <h4>Grupos deste usuário </h4>
@@ -205,10 +206,10 @@
                     </ol>
                 </text>
             </div>
-            
+
         }
-               
-        
+
+
 
         <div class="col-lg-12" style="height:80px; margin-top:30px;">
             <h4>Excluir usuário de um grupo</h4>
@@ -221,13 +222,13 @@
                 <p>
                     @*Name : @Html.TextBox("User")*@
                     Usuário : @Html.TextBox("UserName")
-                    <span style="padding-left:15px; margin-right:10px;">Nome do grupo: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)</span>
+                    <span style="padding-left:15px; margin-right:10px;">Nome do grupo: @Html.DropDownList("RoleName", ViewBag.NomeRegra as SelectList)</span>
                     <input type="submit" value="Excluir" />
                 </p>
 
-               
+
             }
-            </div>
         </div>
-   
     </div>
+
+</div>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Planilhas.Models.Role
+
+@{
     ViewBag.Title = "RoleCreate";
     Layout = "~/Views/Shared/_Layout.cshtml";
     <style>
@@ -19,14 +21,12 @@
             cursor: pointer;
             -webkit-appearance: button;
             background-color: #117fc5;
-            color: white;
-            
-            
+            color: white;            
         }
 
          input[type="submit"]:hover{
              
-             box-shadow: 0 0 1em #1c71dc;
+         box-shadow: 0 0 1em #1c71dc;
          }
     </style>
 }
@@ -47,7 +47,7 @@
             </div>
             
             <p>
-                @Html.TextBox("RoleName")
+                @Html.TextBoxFor(model => model.RoleName)
             </p>
             <input type="submit" value="Salvar" />
             <p>&nbsp;</p>

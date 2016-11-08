@@ -43,28 +43,12 @@ namespace Planilhas.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Register()
         {
-            ViewBag.Name = new SelectList(db.Roles.ToList(), "Name", "Name");
-
-            List<SelectListItem> li = new List<SelectListItem>();
-
-            li.Add(new SelectListItem { Text = "Diretoria", Value = "Diretoria" });
-            li.Add(new SelectListItem { Text = "Atendimento", Value = "Atendimento" });
-            li.Add(new SelectListItem { Text = "Imóvel", Value = "Imóvel" });
-            li.Add(new SelectListItem { Text = "RH", Value = "RH" });
-            li.Add(new SelectListItem { Text = "TI", Value = "TI" });
-            li.Add(new SelectListItem { Text = "Auditoria", Value = "Auditoria" });
-            li.Add(new SelectListItem { Text = "Cobranca", Value = "Cobranca" });
-            li.Add(new SelectListItem { Text = "Reativação", Value = "Reativação" });
-            li.Add(new SelectListItem { Text = "Operações", Value = "Operações" });
-            li.Add(new SelectListItem { Text = "Contabilidade", Value = "Contabilidade" });
-            li.Add(new SelectListItem { Text = "Compras", Value = "Compras" });
-            li.Add(new SelectListItem { Text = "Financeiro", Value = "Financeiro" });
-            li.Add(new SelectListItem { Text = "Cadastro", Value = "Cadastro" });
-            li.Add(new SelectListItem { Text = "Jurídico", Value = "Jurídico" });
-            ViewData["departamentos"] = li;
-
-
+            var Depart = db.Departamentos.ToList();
+            SelectList list = new SelectList(Depart, "Departamento", "Departamento");
+            ViewBag.DepartamentoNome = list;
             return View();
+
+            
         }
         //pagina de Cadastro
         [HttpPost]
@@ -75,7 +59,6 @@ namespace Planilhas.Controllers
             if (ModelState.IsValid)
 
             {
-
 
                 using (OurDbContext db = new OurDbContext())
                 {
@@ -135,10 +118,6 @@ namespace Planilhas.Controllers
             return View();
         }
 
-
-
-
-
         //pagina Logado
 
         public ActionResult Logado()
@@ -175,6 +154,7 @@ namespace Planilhas.Controllers
         }
 
 
+        //ROLES
 
         //cria novas regras --GET
         [Authorize(Roles = "Admin")]
@@ -187,44 +167,52 @@ namespace Planilhas.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RoleCreate(string RoleName)
+        public ActionResult RoleCreate(Role r)
         {
-            if ((Request.Form["RoleName"]) == "")
+            using (OurDbContext db = new OurDbContext()) //usa o model OurDbContext para fazer a conexao com o banco de dados
             {
-                ViewBag.ResultMessage = "Não deixe o campo vazio!";
-                return View();
-            }
+              
+                try {
 
-            if (Roles.RoleExists(RoleName))
-            {
-                ViewBag.ResultMessage = "Este grupo já existe!";
-            }
-            else { 
-            Roles.CreateRole(Request.Form["RoleName"]);
-               
-            return RedirectToAction("RoleIndex", "Account");
+                    db.Roles.Add(r);
+                    db.SaveChanges();
 
-            }
-            // ViewBag.ResultMessage = "Role created successfully !";
+                    return RedirectToAction("RoleIndex", "Account");
 
-            return View();
+                }
+                catch(Exception)
+                {
+                    if(Request.Form["RoleName"] == "") { 
+                    ViewBag.ResultMessage = "Não deixe o campo vazio!";
+                    }
+                    if (Request.Form["RoleName"] != "")
+                    {
+                        ViewBag.ResultMessage = "Este grupo já existe!";
+                    }
+                    return View();
+                }
+                // ViewBag.ResultMessage = "Role created successfully !";
+            }
+           
         }
 
         //lista todas as regras
         [Authorize(Roles = "Admin")]
         public ActionResult RoleIndex()
         {
-            var roles = Roles.GetAllRoles();
-            return View(roles);
+            Role r = new Role();
+            var allRoles = db.Roles.ToList();         
+            return View(allRoles);
+       
         }
 
         //Excluir regra
         [Authorize(Roles = "Admin")]
         public ActionResult RoleDelete(string RoleName)
         {
-
-            Roles.DeleteRole(RoleName);
-            // ViewBag.ResultMessage = "Role deleted succesfully !";
+            Role rol = db.Roles.Find(RoleName);
+            db.Roles.Remove(rol);
+            db.SaveChanges();
 
 
             return RedirectToAction("RoleIndex", "Account");
@@ -234,8 +222,9 @@ namespace Planilhas.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult RoleAddToUser()
         {
-            SelectList list = new SelectList(Roles.GetAllRoles());
-            ViewBag.Roles = list;
+            var Depart = db.Roles.ToList();
+            SelectList list = new SelectList(Depart, "RoleName", "RoleName");
+            ViewBag.NomeRegra = list;
 
             return View();
         }
@@ -258,19 +247,10 @@ namespace Planilhas.Controllers
                 ViewBag.ResultMessage = "Não deixe o campo vazio!";
                 return View();
             }
-
-            if (Roles.IsUserInRole(UserName, RoleName))
-            {
-                ViewBag.ResultMessage = "Este usuário ja pertence a esse grupo!";
-            }
-            else
-            {
-                Roles.AddUserToRole(UserName, RoleName);
-                ViewBag.ResultMessage = "Usuário adicionado ao grupo com sucesso!";
-            }
-
-            SelectList list = new SelectList(Roles.GetAllRoles());
-            ViewBag.Roles = list;
+         
+            UserRole rol = db.UserRoles.Find(RoleName, UserName);
+            db.UserRoles.Add(rol);
+            db.SaveChanges();
             return View();
         }
 

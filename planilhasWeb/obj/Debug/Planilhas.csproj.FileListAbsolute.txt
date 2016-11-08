@@ -889,9 +889,9 @@ C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.csprojResolveAssemblyReference.cache
-C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.Migrations.PrimeiraMigration.resources
-C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.csproj.GenerateResource.Cache
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\RdlCompile.cache
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\RdlCompile.compiled
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.dll
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.pdb
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.Migrations.Projeto_pla.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.csproj.GenerateResource.Cache
