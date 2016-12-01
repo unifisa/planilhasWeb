@@ -98,10 +98,10 @@ namespace Planilhas.Controllers
                 if (usr != null)
                 {
 
-                    Session["ColaboradorId"] = usr.ColaboradorId;
-                    Session["Usuario"] = usr.Usuario.ToString();
-                    FormsAuthentication.SetAuthCookie(usr.Usuario.ToString(), false);
-                    if (Session["ColaboradorID"] != null)
+                    System.Web.HttpContext.Current.Session["ColaboradorId"] = usr.ColaboradorId;
+                    System.Web.HttpContext.Current.Session["Usuario"] = usr.Usuario.ToString();
+                    FormsAuthentication.SetAuthCookie(usr.Usuario.ToString(), createPersistentCookie: true);
+                    if (System.Web.HttpContext.Current.Session["ColaboradorID"] != null)
                     {
 
 
@@ -122,7 +122,7 @@ namespace Planilhas.Controllers
         {
 
 
-            if (Session["ColaboradorId"] != null)
+            if (System.Web.HttpContext.Current.Session["Usuario"] != null)
             {
 
                 return View();
@@ -131,7 +131,7 @@ namespace Planilhas.Controllers
             else
             {
                 FormsAuthentication.SignOut();
-                Session.Abandon();
+                System.Web.HttpContext.Current.Session.Abandon();
                 return RedirectToAction("Login");
             }
         }

@@ -17,12 +17,12 @@
 }
 
 .cor-conteudo {
-    min-height: 625px;
+    min-height: 615px;
     background-color: white;
     color: rgb(71, 132, 171);
     font-size: medium;
     position:relative;
-    padding-top:95px;
+    padding-top:90px;
     box-shadow:0 9px 0px 0px white, 0 -9px 0px 0px white, 0px 0 15px -4px rgba(169, 197, 232, 0.16), -0px 0 15px -4px rgba(134, 148, 165, 0.8);
     overflow-x:no-display;
 }
@@ -166,6 +166,7 @@ select{
 
 .panel-body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top:30px;
 }
 
 .col-lg-12 {

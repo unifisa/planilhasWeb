@@ -107,7 +107,8 @@
         $("#jqxgrid").jqxGrid(
                  {
                      width: 1140,
-                     height: 347,
+                     height: 386,
+                     autorowheight: true,
                      source: dataadapter,
                      sortable: true,
                      filterable: true,
@@ -199,7 +200,7 @@
 @if (Request.IsAuthenticated && @ViewBag.title != "Login")
 {
     <body>
-        <div class="cor-conteudo">
+        <div class="cor-conteudo" style="overflow:hidden;">
             <div id="criarPla" style="padding-left:10px; padding-bottom:10px;">
                 <a href="/Requisicao_Cemy/Create"><i class="glyphicon glyphicon-plus" title="Criar planilha"></i></a>
                 <span class="nome" style="color:#4784AB; font-family:'Lucida Sans'; margin-left:10px;">Requisição de Pagamento - Cemy</span>

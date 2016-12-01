@@ -22,43 +22,52 @@
     }
     @if (ViewBag.title != "Login")
     {
-      <style>
-          .div-footer{
-              background-color:white;
-          }
+        <style>
+            .div-footer {
+                background-color: white;
+            }
 
-          li{
-              
-          }
-      </style>
+            li {
+            }
+
+            body {
+                overflow: auto;
+            }
+        </style>
+    }
+    @if (ViewBag.title == "Role Add To User")
+    {
+        <style>
+            body {
+                overflow: hidden;
+            }
+        </style>
     }
 
 
 </head>
-<body style="overflow:hidden;">
+<body>
     @if (Request.IsAuthenticated)
     {
         using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
         {
             @Html.AntiForgeryToken()
 
-            <ul class="nav navbar-nav navbar-right" style="clear:both;">          
-
-            </ul>
+            <ul class="nav navbar-nav navbar-right" style="clear:both;"></ul>
         }
 
     }
     else
     {
         @*
-    <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
 
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
         *@
     }
 
-   
+
 
     <div class="container body-content">
         @if (ViewBag.title != "Logado" && ViewBag.title == "ListaDiretoria")
@@ -66,9 +75,9 @@
             <span style="font-size:20px;text-transform:uppercase; font-family:'Lato', Arial, sans-serif;">@Html.ActionLink("Diretoria", "ListaDiretoria", "ListaPlanilhas")</span>
         }
 
-            @RenderBody()
+        @RenderBody()
 
-        </div>
+    </div>
     @if (Request.IsAuthenticated && @ViewBag.title != "Login")
     {
         <ul id="gn-menu" class="gn-menu-main">
@@ -77,68 +86,68 @@
                 <nav class="gn-menu-wrapper">
                     <div class="gn-scroller">
                         <ul class="gn-menu">
-                          
+
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaDiretoria", "ListaPlanilhas")">Diretoria</a>
-                            </li>  
-                                                        
+                            </li>
+
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaAtendimento", "ListaPlanilhas")">Atendimento</a>
-                            </li>                         
-                                                      
+                            </li>
+
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaRh", "ListaPlanilhas")">Imóvel</a>
-                            </li> 
-                                                        
+                            </li>
+
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaRh", "ListaPlanilhas")">RH</a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaTi", "ListaPlanilhas")">Tecnologia</a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaAuditoria", "ListaPlanilhas")">Auditoria</a>
-                            </li> 
-                                                        
+                            </li>
+
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaCobranca", "ListaPlanilhas")">Cobrança</a>
-                            </li>                                                         
+                            </li>
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaReativacao", "ListaPlanilhas")">Reativação</a>
-                            </li>                                                          
+                            </li>
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaOperacoes", "ListaPlanilhas")">Operações</a>
-                            </li>                             
+                            </li>
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaContabilidade", "ListaPlanilhas")">Contabilidade</a>
-                            </li> 
+                            </li>
 
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaCompras", "ListaPlanilhas")">Compras</a>
-                            </li> 
+                            </li>
 
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaFinanceiro", "ListaPlanilhas")">Financeiro</a>
-                            </li> 
-                            
+                            </li>
+
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaCadastro", "ListaPlanilhas")">Cadastro</a>
-                            </li>  
+                            </li>
 
                             <li>
                                 <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaJuridico", "ListaPlanilhas")">Jurídico</a>
-                            </li>  
-                           
+                            </li>
+
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>
             </li>
-            <li>                
-                <a href="@Url.Action("Logado", "Account")" title="Página Inicial">                    
+            <li>
+                <a href="@Url.Action("Logado", "Account")" title="Página Inicial">
                     <i class="glyphicon glyphicon-home" aria-hidden="true" style="font-size:17px;"></i>
                 </a>
-            </li>            
-            <li><span style="padding:0 30px; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">@Html.Raw("Bem vindo " + User.Identity.GetUserName())</span></li>
+            </li>
+            <li><span style="padding:0 30px; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">@Html.Raw("Usuário " + User.Identity.GetUserName())</span></li>
             @if (User.IsInRole("Admin"))
             {
                 <li>
@@ -151,7 +160,7 @@
 
             }
             <li> @Html.ActionLink("Alterar senha", "AlterarSenha", "Senha")</li>
-            
+
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Sair</a></li>
 
         </ul>
@@ -163,7 +172,7 @@
         @if (Request.IsAuthenticated && @ViewBag.title != "Login" && ViewBag.title != "Register")
         {
             <ul>
-            
+
 
                 @if (ViewBag.title != "Logado" && ViewBag.title == "ListaAtendimento")
                 {
@@ -240,7 +249,7 @@
 
     </div>
 
-    
+
 
 
     <!--RODAPÉ-->

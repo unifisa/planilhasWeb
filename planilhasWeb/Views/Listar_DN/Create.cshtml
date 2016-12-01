@@ -65,7 +65,7 @@
 
     </head>
 
-    <body>
+    <body style="overflow:scroll !important;">
 
 
         @using (Html.BeginForm())
@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="noPrint">
-                        <h5 style="margin-top:10px;"><a href="/Listar_DN/Index">Voltar</a></h5>
+                        @*<h5 style="margin-top:10px;"><a href="/Listar_DN/Index">Voltar</a></h5>*@
                     </div>
                 </div>
                 @if (TempData["Message"] != null)
