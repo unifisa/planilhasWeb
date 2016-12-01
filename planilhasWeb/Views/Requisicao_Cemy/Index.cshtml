@@ -199,27 +199,29 @@
 @if (Request.IsAuthenticated && @ViewBag.title != "Login")
 {
     <body>
-        <div id="criarPla">
-            <a href="/Requisicao_Cemy/Create"><i class="glyphicon glyphicon-plus" title="Criar planilha"></i></a>
-            <span class="nome" style="color:#4784AB; font-family:'Lucida Sans'; margin-left:10px;">Requisição de Pagamento - Cemy</span>
-        </div>
-        <div id="jqxgrid" style="font-size: 13px; font-family: Verdana; height:400px; width:1140px; background-color:white">
+        <div class="cor-conteudo">
+            <div id="criarPla" style="padding-left:10px; padding-bottom:10px;">
+                <a href="/Requisicao_Cemy/Create"><i class="glyphicon glyphicon-plus" title="Criar planilha"></i></a>
+                <span class="nome" style="color:#4784AB; font-family:'Lucida Sans'; margin-left:10px;">Requisição de Pagamento - Cemy</span>
+            </div>
+            <div id="jqxgrid" style="font-size: 13px; font-family: Verdana; height:400px; width:1140px; position:relative; background-color:white; z-index:0;">
 
-        </div>
+            </div>
 
-        <div id='grid-panel' class='scroll' style="margin-top:10px;">
-            <input type="button" value="Exportar para PDF" id='pdfExport' />
-            <input type="button" value="Imprimir" id='print' />
-        </div>
+            <div id='grid-panel' class='scroll' style="margin-top:10px; padding-left:10px;">
+                <input type="button" value="Exportar para PDF" id='pdfExport' />
+                <input type="button" value="Imprimir" id='print' />
+            </div>
 
-        <div style='margin-top: 20px;'>
-            <div style='float: left;'>
-                <div style='margin-left: 10px; float: left;'>
+            <div style='margin-top: 20px;'>
+                <div style='float: left;'>
+                    <div style='margin-left: 10px; float: left;'>
 
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
 
-    </body>
+</body>
 }
 </html>

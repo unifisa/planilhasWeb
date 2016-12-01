@@ -9,76 +9,167 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    @if (Request.IsAuthenticated && @ViewBag.title != "Login")
+    {
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" type="text/css" href="~/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="~/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="~/css/component.css" />
+        <link rel="stylesheet" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <script src="~/js/modernizr.custom.js"></script>
 
-    
+    }
+    @if (ViewBag.title != "Login")
+    {
+      <style>
+          .div-footer{
+              background-color:white;
+          }
+
+          li{
+              
+          }
+      </style>
+    }
+
+
 </head>
-<body>
+<body style="overflow:hidden;">
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right" style="clear:both;">          
+
+            </ul>
+        }
+
+    }
+    else
+    {
+        @*
+    <ul class="nav navbar-nav navbar-right">
+
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+        *@
+    }
+
+   
+
+    <div class="container body-content">
+        @if (ViewBag.title != "Logado" && ViewBag.title == "ListaDiretoria")
+        {
+            <span style="font-size:20px;text-transform:uppercase; font-family:'Lato', Arial, sans-serif;">@Html.ActionLink("Diretoria", "ListaDiretoria", "ListaPlanilhas")</span>
+        }
+
+            @RenderBody()
+
+        </div>
+    @if (Request.IsAuthenticated && @ViewBag.title != "Login")
+    {
+        <ul id="gn-menu" class="gn-menu-main">
+            <li class="gn-trigger">
+                <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                <nav class="gn-menu-wrapper">
+                    <div class="gn-scroller">
+                        <ul class="gn-menu">
+                          
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaDiretoria", "ListaPlanilhas")">Diretoria</a>
+                            </li>  
+                                                        
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaAtendimento", "ListaPlanilhas")">Atendimento</a>
+                            </li>                         
+                                                      
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaRh", "ListaPlanilhas")">Imóvel</a>
+                            </li> 
+                                                        
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaRh", "ListaPlanilhas")">RH</a>
+                            </li>                            
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaTi", "ListaPlanilhas")">Tecnologia</a>
+                            </li>                            
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaAuditoria", "ListaPlanilhas")">Auditoria</a>
+                            </li> 
+                                                        
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaCobranca", "ListaPlanilhas")">Cobrança</a>
+                            </li>                                                         
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaReativacao", "ListaPlanilhas")">Reativação</a>
+                            </li>                                                          
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaOperacoes", "ListaPlanilhas")">Operações</a>
+                            </li>                             
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaContabilidade", "ListaPlanilhas")">Contabilidade</a>
+                            </li> 
+
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaCompras", "ListaPlanilhas")">Compras</a>
+                            </li> 
+
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaFinanceiro", "ListaPlanilhas")">Financeiro</a>
+                            </li> 
+                            
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaCadastro", "ListaPlanilhas")">Cadastro</a>
+                            </li>  
+
+                            <li>
+                                <a class="gn-icon gn-icon-cog" href="@Url.Action("ListaJuridico", "ListaPlanilhas")">Jurídico</a>
+                            </li>  
+                           
+                        </ul>
+                    </div><!-- /gn-scroller -->
+                </nav>
+            </li>
+            <li>                
+                <a href="@Url.Action("Logado", "Account")" title="Página Inicial">                    
+                    <i class="glyphicon glyphicon-home" aria-hidden="true" style="font-size:17px;"></i>
+                </a>
+            </li>            
+            <li><span style="padding:0 30px; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">@Html.Raw("Bem vindo " + User.Identity.GetUserName())</span></li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    @Html.ActionLink("Regras", "RoleIndex", "Account", routeValues: null, htmlAttributes: new { title = "" })
+                </li>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <li>@Html.ActionLink("Cadastrar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+
+            }
+            <li> @Html.ActionLink("Alterar senha", "AlterarSenha", "Senha")</li>
+            
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Sair</a></li>
+
+        </ul>
+    }
 
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @*@Html.ActionLink("POC - Planilhas", "Login", new { area = "" }, new { @class = "navbar-brand" })*@
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                @*<li>@Html.ActionLink("Planilha", "Index", "Planilha")</li>*@
-            </ul>
-            @Html.Partial("_LoginPartial")
-    
-        </div>
 
 
         @if (Request.IsAuthenticated && @ViewBag.title != "Login" && ViewBag.title != "Register")
         {
-            <ul class="nav navbar-nav navbar-left" style="height:auto;">
-
-                @if (ViewBag.title == "Logado" || ViewBag.title == "Semacesso")
-                {
-                                       
-                <li>@Html.ActionLink("Diretoria", "ListaDiretoria", "ListaPlanilhas")</li>
-                                        
-                <li>@Html.ActionLink("Atendimento", "ListaAtendimento", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Imóvel", "ListaImovel", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("RH", "ListaRh", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("TI", "ListaTi", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Auditoria", "ListaAuditoria", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Cobrança", "ListaCobranca", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Reativação", "ListaReativacao", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Operações", "ListaOperacoes", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Contabilidade", "ListaContabilidade", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Compras", "ListaCompras", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Financeiro", "ListaFinanceiro", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Cadastro", "ListaCadastro", "ListaPlanilhas")</li>
-
-                <li>@Html.ActionLink("Jurídico", "ListaJuridico", "ListaPlanilhas")</li>
-                }
-
-                @if (ViewBag.title != "Logado" && ViewBag.title == "ListaDiretoria")
-                {
-                    <li style="font-size:20px;">@Html.ActionLink("Diretoria", "ListaDiretoria", "ListaPlanilhas")</li>
-                }
+            <ul>
+            
 
                 @if (ViewBag.title != "Logado" && ViewBag.title == "ListaAtendimento")
                 {
                     <li style="font-size:18px;">@Html.ActionLink("Atendimento", "ListaAtendimento", "ListaPlanilhas")</li>
                 }
-                
+
                 @if (ViewBag.title != "Logado" && ViewBag.title == "ListaImovel")
                 {
                     <li style="font-size:18px;">@Html.ActionLink("Imóvel", "ListaImovel", "ListaPlanilhas")</li>
@@ -149,45 +240,53 @@
 
     </div>
 
-    <div class="container body-content">
+    
 
 
-        @*@if (Request.IsAuthenticated && ViewBag.title != "Login")
-            {
-
-                <ul class="pesquisa-menu-pai">
-
-                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Cliente" class="btn-default" /></li>
-                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Cota" class="btn-default" /></li>
-                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Grupo" class="btn-default" /></li>
-                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Contrato" class="btn-default" /></li>
-                    <li class="pesquisa-menu">@Html.TextBox("Busca") <input type="submit" value="Planilha" class="btn-default" /></li>
-
-                </ul>
-            }*@
-
-        @RenderBody()
-
-
-    </div>
-
+    <!--RODAPÉ-->
     <div class="noPrint">
-        <div class="div-footer">
+        @if (ViewBag.title != "Login")
+        {
+            <div class="div-footer" style="background-color:white;">
+                <p>
 
-            <p>
-                
-                @if(ViewBag.title != "Login") {
-                <img src="~/Content/sig-logo.png" title="SIG" />
-                }
-                Copyright &copy; @DateTime.Now.Year - Departamento de Tecnologia Unifisa
-            </p>
-        </div>
+                    @if (ViewBag.title != "Login")
+                    {
+                        <img src="~/Content/sig-logo.png" title="SIG" />
+                    }
+                    Copyright &copy; @DateTime.Now.Year - Departamento de Tecnologia Unifisa
+                </p>
+            </div>
+        }
+        else {
+            <div class="div-footer">
+
+                <p>
+
+                    @if (ViewBag.title != "Login")
+                    {
+                        <img src="~/Content/sig-logo.png" title="SIG" />
+                    }
+                    Copyright &copy; @DateTime.Now.Year - Departamento de Tecnologia Unifisa
+                </p>
+            </div>
+        }
     </div>
+
+
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqwidgets")
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
-   
+    <script src="~/js/classie.js"></script>
+    <script src="~/js/gnmenu.js"></script>
+    <script>
+        new gnMenu(document.getElementById('gn-menu'));
+    </script>
+
+
 </body>
 </html>

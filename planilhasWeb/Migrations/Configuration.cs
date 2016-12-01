@@ -9,7 +9,7 @@ namespace Planilhas.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Planilhas.Models.OurDbContext context)

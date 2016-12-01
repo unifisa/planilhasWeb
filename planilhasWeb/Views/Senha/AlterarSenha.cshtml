@@ -13,42 +13,46 @@
 {
     if (Request.IsAuthenticated && ViewBag.title != "Login")
     {
+        
 
     @Html.AntiForgeryToken()
 
-    <div class="cor-conteudo" style="padding-bottom:170px;">
-       
-     
-        @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="cor-conteudo">
+        <div class="form-horizontal">
+            <h3 style="font-family:'Lato', Arial, sans-serif; padding-left:80px;">Alterar a senha</h3>
+            <hr />
 
-        <br /><br /><br /><br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.Senha, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", placeholder = "Coloque uma nova senha" } })
-                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConfirmeSenha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConfirmeSenha, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirme sua nova senha" } })
-                @Html.ValidationMessageFor(model => model.ConfirmeSenha, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
 
-            <div class="col-lg-2">
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+            <br /><br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Senha, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", placeholder = "Coloque uma nova senha" } })
+                    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConfirmeSenha, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ConfirmeSenha, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirme sua nova senha" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmeSenha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-lg-2">
+
+                </div>
+                <div class="col-md-8">
+                    <input type="submit" value="Enviar" class="btn btn-default" />
+                </div>
 
             </div>
-            <div class="col-md-8">
-                <input type="submit" value="Enviar" class="btn btn-default" />
-            </div>
+            <div class="form-group">
+                <div class="col-lg-12">
 
-        </div>
-        <div class="form-group">
-            <div class="col-lg-12">
-               
                     <div class="col-lg-6"></div>
                     <div class="form-group col-lg-6">
                         @if (TempData["Message"] != null)
@@ -57,20 +61,21 @@
                                 <div class="mensagem-sucesso" style="color:forestgreen;">@TempData["Message"]</div>
                             </div>
                         }
-                       @if (TempData["Msg"] != null)
+                        @if (TempData["Msg"] != null)
 
-                       {
-                        <div class="form-group">
-                            
-                            <div class="mensagem-erro" style="color:darkred;">@TempData["Msg"]</div>
-                        </div>
-                       }
-                       
+                        {
+                            <div class="form-group">
+
+                                <div class="mensagem-erro" style="color:darkred;">@TempData["Msg"]</div>
+                            </div>
+                        }
+
                     </div>
-                
+
+                </div>
+            </div>
             </div>
         </div>
-    </div>
 
     }
 }

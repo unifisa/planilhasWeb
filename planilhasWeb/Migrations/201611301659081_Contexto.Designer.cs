@@ -7,13 +7,13 @@ namespace Planilhas.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Projeto_pla : IMigrationMetadata
+    public sealed partial class Contexto : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Projeto_pla));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Contexto));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611071300300_Projeto_pla"; }
+            get { return "201611301659081_Contexto"; }
         }
         
         string IMigrationMetadata.Source

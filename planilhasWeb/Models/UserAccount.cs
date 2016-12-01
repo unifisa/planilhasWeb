@@ -23,7 +23,7 @@ namespace Planilhas.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Escolha um departamento", AllowEmptyStrings = false)]
-        [Display(Name = "Depart.")]
+        [Display(Name = "Departamento")]
         public string Departamentos { get; set; }
         
         [Required]

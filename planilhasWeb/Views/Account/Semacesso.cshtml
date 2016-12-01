@@ -1,12 +1,24 @@
 ﻿@{
     ViewBag.Title = "Semacesso";
 }
+<head>
+    <style>
+        h4, a {
+            color: #4784AB;
+            font-family: 'Lato', Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 15px;
+            padding-left:20px;
+        }
+    </style>
+</head>
 <script>
 function goback() {
     history.go(-1);
 }
 </script>
-<p>
-    <h4 style="color:#4784AB;">Desculpe, você não tem permissão. </h4><a href="javascript:goback()" style="color:mediumslateblue;">Voltar</a>
-</p>
-
+<div class="cor-conteudo">
+    <p>
+       <h4>Desculpe, você não tem permissão para acessar esse departamento<a href="javascript:goback()" style="color:mediumslateblue;">(Voltar)</a></h4>
+    </p>
+    </div>

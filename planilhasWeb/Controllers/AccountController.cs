@@ -46,9 +46,7 @@ namespace Planilhas.Controllers
             var Depart = db.Departamentos.ToList();
             SelectList list = new SelectList(Depart, "Departamento", "Departamento");
             ViewBag.DepartamentoNome = list;
-            return View();
-
-            
+            return View();            
         }
         //pagina de Cadastro
         [HttpPost]
@@ -71,7 +69,7 @@ namespace Planilhas.Controllers
             else
             {
 
-                TempData["Msg"] = " Usuário nao foi cadastrado. Preencha todos os campos. ";
+                TempData["Msg"] = " Usuário não foi cadastrado. Preencha todos os campos. ";
             }
 
             return RedirectToAction("Register", "Account");
@@ -102,7 +100,7 @@ namespace Planilhas.Controllers
 
                     Session["ColaboradorId"] = usr.ColaboradorId;
                     Session["Usuario"] = usr.Usuario.ToString();
-                    FormsAuthentication.SetAuthCookie(usr.Usuario.ToString(), true);
+                    FormsAuthentication.SetAuthCookie(usr.Usuario.ToString(), false);
                     if (Session["ColaboradorID"] != null)
                     {
 
@@ -112,7 +110,7 @@ namespace Planilhas.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Usuario ou senha estao errados");
+                    ModelState.AddModelError("", "Usuário ou senha estão errados");
                 }
             }
             return View();
@@ -171,7 +169,15 @@ namespace Planilhas.Controllers
         {
             using (OurDbContext db = new OurDbContext()) //usa o model OurDbContext para fazer a conexao com o banco de dados
             {
-              
+                Role rol = (from u in db.Roles
+                            where u.RoleName == r.RoleName
+                            select u).SingleOrDefault();
+                if(rol != null)
+                {
+                    ViewBag.ResultMessage = "Este grupo já existe";
+                    return View();
+                }
+             
                 try {
 
                     db.Roles.Add(r);
@@ -185,10 +191,7 @@ namespace Planilhas.Controllers
                     if(Request.Form["RoleName"] == "") { 
                     ViewBag.ResultMessage = "Não deixe o campo vazio!";
                     }
-                    if (Request.Form["RoleName"] != "")
-                    {
-                        ViewBag.ResultMessage = "Este grupo já existe!";
-                    }
+                    
                     return View();
                 }
                 // ViewBag.ResultMessage = "Role created successfully !";
@@ -229,28 +232,22 @@ namespace Planilhas.Controllers
             return View();
         }
 
-
-
-        /// <summary>
-        /// Add role to the user
-        /// </summary>
-        /// <param name="RoleName"></param>
-        /// <param name="UserName"></param>
-        /// <returns></returns>
-        [Authorize(Roles = "Admin")]
+         //adiciona regra ao usuario     
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RoleAddToUser(string RoleName, string UserName)
+        public ActionResult RoleAddToUser(UserRole adiciona)
         {
             if ((Request.Form["UserName"]) == "" || (Request.Form["RoleName"]) == "")
             {
                 ViewBag.ResultMessage = "Não deixe o campo vazio!";
                 return View();
             }
-         
-            UserRole rol = db.UserRoles.Find(RoleName, UserName);
-            db.UserRoles.Add(rol);
+
+            db.UserRoles.Add(adiciona);
             db.SaveChanges();
+
+            ViewBag.ResultMessage = "Role created successfully !";
             return View();
         }
 

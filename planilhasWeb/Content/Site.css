@@ -1,10 +1,12 @@
 ﻿body {
-    background-image: url(/fonts/bg.jpg);
+    background-image: url(/fonts/bg.png);
+    height:100%;
 }
 
 .body-content {
     font-family: sans-serif;
     color: gray;
+    
 }
 
 .pesquisa-menu-pai {
@@ -15,10 +17,14 @@
 }
 
 .cor-conteudo {
+    min-height: 625px;
     background-color: white;
-    height: auto;
     color: rgb(71, 132, 171);
     font-size: medium;
+    position:relative;
+    padding-top:95px;
+    box-shadow:0 9px 0px 0px white, 0 -9px 0px 0px white, 0px 0 15px -4px rgba(169, 197, 232, 0.16), -0px 0 15px -4px rgba(134, 148, 165, 0.8);
+    overflow-x:no-display;
 }
 
   
@@ -64,7 +70,7 @@
     padding-left: 15px;
     padding-right: 15px;
     margin: 0 auto;
-    margin-top: 55px;
+    margin-top: 115px;
     padding-bottom: 25px;
     position: relative;
     width: 500px;

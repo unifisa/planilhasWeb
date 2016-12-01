@@ -17,28 +17,50 @@
 
         }
     </script>
+
+    <style>
+        .lista-estilo-divpai {
+            -webkit-box-shadow: 1px 1px 12px 0px rgba(140, 140, 247, 0.82);
+            -moz-box-shadow: 1px 1px 12px 0px rgba(140, 140, 247, 0.82);
+            box-shadow: 1px 1px 12px 0px rgba(140, 140, 247, 0.82);
+            margin-left: 25px;
+            font-family: 'Lato', Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        .lista-estilo {
+            -webkit-box-shadow: 1px 1px 12px 0px rgba(140, 140, 247, 0.82);
+            -moz-box-shadow: 1px 1px 12px 0px rgba(140, 140, 247, 0.82);
+            box-shadow: 1px 1px 12px 0px rgba(140, 140, 247, 0.82);
+            font-family: 'Lato', Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 
 @if (Request.IsAuthenticated && ViewBag.title != "Login")
 {
+    <div class="cor-conteudo">
+        <h4 class="lista-estilo-divpai col-md-10">
+            <a href="#" onclick="Mudarestado('requisicao')"> Requisição de Pagamento </a>
+        </h4>
 
-    <h4 class="lista-estilo-divpai col-md-12">
-        <a href="#" onclick="Mudarestado('requisicao')"> Requisição de Pagamento </a>
-    </h4>
 
+        <div id="requisicao" class="col-md-8 margem" hidden>
+            <ul>
+                <li class="col-md-8 lista-estilo">Requisições de pagamento - UNIFISA [<a href="/Requisicao/Index">Listagem</a>]</li>
+                <li class="col-md-8 lista-estilo">Requisições de pagamento - FISA [<a href="/Requisicao_Fisa/Index">Listagem</a>]</li>
+                <li class="col-md-8 lista-estilo">Requisições de pagamento - CEMY [<a href="/Requisicao_Cemy/Index">Listagem</a>]</li>
 
-    <div id="requisicao" class="col-md-8 margem" hidden>
-        <ul>
-            <li class="col-md-8 lista-estilo">Requisições de pagamento - UNIFISA [<a href="/Requisicao/Index">Listagem</a>]</li>
-            <li class="col-md-8 lista-estilo">Requisições de pagamento - FISA [<a href="/Requisicao_Fisa/Index">Listagem</a>]</li>
-            <li class="col-md-8 lista-estilo">Requisições de pagamento - CEMY [<a href="/Requisicao_Cemy/Index">Listagem</a>]</li>
-           
-        </ul>
-    </div>
-
-    
-
+            </ul>
+        </div>
+        </div>
 
 
 
-}
+
+
+        }

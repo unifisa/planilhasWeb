@@ -200,33 +200,35 @@
 {
     
     <body>
-        <div id="criarPla">
-            <a href="/Listar_DN/Create"><i class="glyphicon glyphicon-plus" title="Criar planilha"></i></a>
-            <span class="nome" style="color:#4784AB; font-family:'Lucida Sans'; margin-left:10px;">Calculo% / Diluição Normal</span>
-        </div>
-      
-        <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
-            <div id="jqxgrid" style="font-size: 13px; font-family: Verdana; height:400px; width:1140px; background-color:white; float: left;">
-
+        <div class="cor-conteudo">
+            <div id="criarPla" style="padding-left:10px; padding-bottom:5px;">
+                <a href="/Listar_DN/Create"><i class="glyphicon glyphicon-plus" title="Criar planilha"></i></a>
+                <span class="nome" style="color:#4784AB; font-family:'Lucida Sans'; margin-left:10px;">Calculo% / Diluição Normal</span>
             </div>
-        </div>
 
-        <div id='grid-panel' class='scroll' style="float:left; margin-top:10px;">
-            <input type="button" value="Exportar para PDF" id='pdfExport' />
-            <input type="button" value="Imprimir" id='print' />
-
-        </div>
-
-
-        <div style='margin-top: 20px;'>
-            <div style='float: left;'>
-                <div style='margin-left: 10px; float: left;'>
+            <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+                <div id="jqxgrid" style="font-size: 13px; font-family: Verdana; height:400px; width:1140px; float: left; position:relative; background-color:white; z-index:0;">
 
                 </div>
             </div>
-        </div>
 
-    </body>
+            <div id='grid-panel' class='scroll' style="float:left; margin-top:10px; padding-left:10px;">
+                <input type="button" value="Exportar para PDF" id='pdfExport' />
+                <input type="button" value="Imprimir" id='print' />
+
+            </div>
+
+
+            <div style='margin-top: 20px;'>
+                <div style='float: left;'>
+                    <div style='margin-left: 10px; float: left;'>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+</body>
    
 }
 </html>

@@ -1,4 +1,4 @@
-﻿
+﻿@model Planilhas.Models.UserRole
 @section scripts{
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
@@ -7,7 +7,7 @@
 
     <script type="text/javascript">
 
-        $(document).ready(function () {
+        $(document).ready(function () { //parte de autocompletar o nome de Usuário, quando digita-se a primeira letra aparece sugestões
             $("#UserName").autocomplete({
                 source: function (request, response) {
                     $.ajax({
@@ -30,7 +30,7 @@
             });
         })
 
-        $(document).ready(function () {
+        $(document).ready(function () { //ao mudar de campo busca o nome completo do usuário - no evento blur
             $("#UserName").bind({
 
             }).blur(function (request, response) {
@@ -50,7 +50,7 @@
                     }
                 })
 
-            }).blur(function (request, response) {
+            }).blur(function (request, response) { //no evento blur acha e devolve o departamento do respectivo usuário
                 $.ajax({
                     url: "/Account/BindDepartamento",
                     type: "POST",
@@ -80,12 +80,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 
-    <style>
+    <style> @* estilos css *@
         .spacerBody {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
+            font-family: 'Lato', Arial, sans-serif;
+            font-size: 14px;
             height: auto;
         }
+
+        
 
         input {
             height: 35px;
@@ -93,6 +95,8 @@
             border: 1px solid rgba(171, 220, 218, 0.92);
             box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
             -webkit-box-shadow: inset 1px 5px 33px -37px #ABABAB, 2px 1px 14px 1px #DDDDDD;
+             text-transform:uppercase;
+            letter-spacing:1px;
         }
 
         select {
@@ -152,19 +156,22 @@
 
 
                 <span style="padding-right:15px; float:left;">
-
-                    Nome de usuário<br /> @Html.TextBox("UserName")
-                </span>
-
-                <span id="show" style="padding-right:15px; float:left;">
-                    Nome <br /> <input type="text" id="user" readonly />
+                    @Html.LabelFor(model => model.Usuario)                    
+                       
+                        @Html.EditorFor(model => model.Usuario)
+                        
+       </span>
+                @*<span id="show" style="padding-right:15px; float:left;">
+                    Nome <br /> <input type="text" id="user" readonly style="width:290px;"/>
                 </span>
                 <span id="show2" style="padding-right:15px; float:left;">
                     Departamento <br /> <input type="text" id="departamento" readonly />
-                </span>
+                </span>*@
 
                 <span style="padding-right:15px; float:left;">
-                    Nome do grupo<br /> @Html.DropDownList("RoleName", ViewBag.NomeRegra as SelectList)
+                    @Html.LabelFor(model => model.RoleName)
+                    @*Nome do grupo<br />*@ 
+                    @Html.DropDownList("RoleName", ViewBag.NomeRegra as SelectList, new { style = "text-transform: uppercase; font-size:15px;" })<!-- puxa os grupos do banco-->
                 </span>
                     <span style="padding-right:15px; float:left;">
                         <br />
@@ -222,7 +229,7 @@
                 <p>
                     @*Name : @Html.TextBox("User")*@
                     Usuário : @Html.TextBox("UserName")
-                    <span style="padding-left:15px; margin-right:10px;">Nome do grupo: @Html.DropDownList("RoleName", ViewBag.NomeRegra as SelectList)</span>
+                    <span style="padding-left:15px; margin-right:10px;">Nome do grupo: @Html.DropDownList("RoleName", ViewBag.NomeRegra as SelectList, new { style = "text-transform: uppercase; font-size:15px;" })</span>
                     <input type="submit" value="Excluir" />
                 </p>
 

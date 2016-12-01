@@ -11,7 +11,7 @@ namespace Planilhas.Models
         [Key]
         
         public string Usuario { get; set; }
-        public int RoleName { get; set; }
+        public string RoleName { get; set; }
     }
 
 }

@@ -199,9 +199,9 @@
     <Compile Include="Controllers\Requisicao_FisaController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SenhaController.cs" />
-    <Compile Include="Migrations\201611071300300_Projeto_pla.cs" />
-    <Compile Include="Migrations\201611071300300_Projeto_pla.Designer.cs">
-      <DependentUpon>201611071300300_Projeto_pla.cs</DependentUpon>
+    <Compile Include="Migrations\201611301659081_Contexto.cs" />
+    <Compile Include="Migrations\201611301659081_Contexto.Designer.cs">
+      <DependentUpon>201611301659081_Contexto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DecimalModelBinder.cs" />
@@ -238,6 +238,8 @@
     <Compile Include="relatorio.aspx.designer.cs">
       <DependentUpon>relatorio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Security\PermissaoProvider.cs" />
+    <Compile Include="Security\PermissoesFiltro.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -506,8 +508,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611071300300_Projeto_pla.resx">
-      <DependentUpon>201611071300300_Projeto_pla.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611301659081_Contexto.resx">
+      <DependentUpon>201611301659081_Contexto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorio.rdlc" />
     <EmbeddedResource Include="Report1.rdlc" />

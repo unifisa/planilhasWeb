@@ -1,47 +1,49 @@
-﻿<meta http-equiv="X-UA-Compatible" content="IE=9" />
-@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+﻿@*
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    @using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
     {
-        @Html.AntiForgeryToken()
+        using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right" style="clear:both;">
-
-
-            <li style="margin-top:17px; margin-right:15px; color:cornflowerblue; float:left">
-               @Html.Raw("Bem vindo " + User.Identity.GetUserName())
-            </li>
-
-            @if (User.IsInRole("Admin"))
-            { 
-            <li>@Html.ActionLink("Cadastrar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-
-            }
-
-             @if (User.IsInRole("Admin"))
-             {
-            <li>
-                @Html.ActionLink("Regras", "RoleIndex", "Account", routeValues: null, htmlAttributes: new { title = "" })
-            </li>
-             }
-             <li>
-                @Html.ActionLink("Departamentos", "Logado", "Account", routeValues: null, htmlAttributes: new { title = "" })
-            </li>
+            <ul class="nav navbar-nav navbar-right" style="clear:both;">
 
 
-            <li> @Html.ActionLink("Alterar senha", "AlterarSenha", "Senha")</li>
+                <li style="margin-top:17px; margin-right:15px; color:cornflowerblue; float:left">
+                    @Html.Raw("Bem vindo " + User.Identity.GetUserName())
+                </li>
 
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Sair</a></li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>@Html.ActionLink("Cadastrar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
 
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>
+                        @Html.ActionLink("Regras", "RoleIndex", "Account", routeValues: null, htmlAttributes: new { title = "" })
+                    </li>
+                }
+                <li>
+                    @Html.ActionLink("Departamentos", "Logado", "Account", routeValues: null, htmlAttributes: new { title = "" })
+                </li>
+
+
+                <li> @Html.ActionLink("Alterar senha", "AlterarSenha", "Senha")</li>
+
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Sair</a></li>
+
+            </ul>
+        }
+
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
         </ul>
     }
-
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+*@
