@@ -8,7 +8,7 @@
     <script type="text/javascript">
 
         $(document).ready(function () { //parte de autocompletar o nome de Usuário, quando digita-se a primeira letra aparece sugestões
-            $("#UserName").autocomplete({
+            $("#Usuario").autocomplete({
                 source: function (request, response) {
                     $.ajax({
                         url: "/Account/AutoComplete",
@@ -31,14 +31,14 @@
         })
 
         $(document).ready(function () { //ao mudar de campo busca o nome completo do usuário - no evento blur
-            $("#UserName").bind({
+            $("#Usuario").bind({
 
             }).blur(function (request, response) {
                 $.ajax({
                     url: "/Account/AutocompletenoClick",
                     type: "POST",
                     dataType: "json",
-                    data: { term: $('#UserName').val() },
+                    data: { term: $('#Usuario').val() },
 
                     success: function (term) {
                         response($.map(term, function (item) {
@@ -55,7 +55,7 @@
                     url: "/Account/BindDepartamento",
                     type: "POST",
                     dataType: "json",
-                    data: { term: $('#UserName').val() },
+                    data: { term: $('#Usuario').val() },
 
                     success: function (term) {
                         response($.map(term, function (item) {
@@ -154,52 +154,55 @@
                 @Html.ValidationSummary(true)
 
 
-
-                <span style="padding-right:15px; float:left;">
-                    @Html.LabelFor(model => model.Usuario)                    
-                       
+                <div class="form-horizontal">
+                    <span style="padding-right:15px; float:left;">
+                        <br />
+                        @Html.LabelFor(model => model.Usuario)
                         @Html.EditorFor(model => model.Usuario)
-                        
-       </span>
-                @*<span id="show" style="padding-right:15px; float:left;">
-                    Nome <br /> <input type="text" id="user" readonly style="width:290px;"/>
-                </span>
-                <span id="show2" style="padding-right:15px; float:left;">
-                    Departamento <br /> <input type="text" id="departamento" readonly />
-                </span>*@
 
-                <span style="padding-right:15px; float:left;">
-                    @Html.LabelFor(model => model.RoleName)
-                    @*Nome do grupo<br />*@ 
-                    @Html.DropDownList("RoleName", ViewBag.NomeRegra as SelectList, new { style = "text-transform: uppercase; font-size:15px;" })<!-- puxa os grupos do banco-->
-                </span>
+                    </span>
+                    <span id="show" style="padding-right:15px; float:left;">
+                        Nome <br /> <input type="text" id="user" readonly style="width:290px;" />
+                    </span>
+                    <span id="show2" style="padding-right:15px; float:left;">
+                        Departamento <br /> <input type="text" id="departamento" readonly />
+                    </span>
+
+                    <span style="padding-right:15px; float:left;">
+                        <br />
+                        @Html.LabelFor(model => model.RoleName)
+                        @*Nome do grupo<br />*@
+                        @Html.DropDownList("RoleName", ViewBag.NomeRegra as SelectList, new { style = "text-transform: uppercase; font-size:15px;" })<!-- puxa os grupos do banco-->
+                    </span>
                     <span style="padding-right:15px; float:left;">
                         <br />
                         <input type="submit" value="Salvar" style="float:left; clear:both;" />
 
                     </span>
+                </div>
             }
         </div>
 
-
+@using (Html.BeginForm("GetRoles", "Account"))
+       {
         <div class="col-lg-12">
             <h4>Ver os grupos deste usuário </h4>
-            @using (Html.BeginForm("GetRoles", "Account"))
-            {
+          
                 <text>
 
 
                     @Html.AntiForgeryToken()
 
-                    Usuário : @Html.TextBox("UserName")
+             @Html.LabelFor(model => model.Usuario)
+             @Html.EditorFor(model => model.Usuario)
                     <input type="submit" value="Ver" style="margin-left:10px; width:50px;" />
                 </text>
-            }
+           
 
         </div>
 
 
-        @if (ViewBag.RolesForThisUser != null)
+        if (ViewBag.RolesForThisUser != null)
         {
 
             <div class="col-lg-12" style="height:80px; padding-top:20px;">
@@ -215,7 +218,7 @@
             </div>
 
         }
-
+            }
 
 
         <div class="col-lg-12" style="height:80px; margin-top:30px;">
