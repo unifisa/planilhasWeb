@@ -48,16 +48,17 @@
 
 //        public override string[] GetRolesForUser(string username)
 //        {
-//              OurDbContext db = new OurDbContext();
+//            OurDbContext db = new OurDbContext();
 
-//             UserRole user = db.UserRoles.FirstOrDefault(u => u.Usuario == username);
+//            UserRole user = db.UserRoles.FirstOrDefault(u => u.Usuario == username);
 
 //            if (user == null)
-//             return new string[] { };
+//                return new string[] { };
 
-           
+//            //List<String> permissoes = user.Usuario.Select(p => p.).ToList();
 
-//            throw new NotImplementedException();
+
+//            return permissoes.ToArray();
 
 //        }
 

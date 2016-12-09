@@ -80,7 +80,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 
-    <style> @* estilos css *@
+    <style>
         .spacerBody {
             font-family: 'Lato', Arial, sans-serif;
             font-size: 14px;
@@ -183,43 +183,34 @@
             }
         </div>
 
-@using (Html.BeginForm("GetRoles", "Account"))
-       {
-        <div class="col-lg-12">
-            <h4>Ver os grupos deste usuário </h4>
-          
-                <text>
-
-
-                    @Html.AntiForgeryToken()
-
-             @Html.LabelFor(model => model.Usuario)
-             @Html.EditorFor(model => model.Usuario)
-                    <input type="submit" value="Ver" style="margin-left:10px; width:50px;" />
-                </text>
-           
-
-        </div>
-
-
-        if (ViewBag.RolesForThisUser != null)
+        @using (Html.BeginForm("GetRoles", "Account"))
         {
+            @Html.AntiForgeryToken()
+            <div class="col-lg-12">
+                <h4>Ver os grupos deste usuário </h4>
+                <p>
+                    Usuário : @Html.TextBox("Usuario")
+                    <input type="submit" value="Ver" />
+                </p>
+            </div>
+        }
 
-            <div class="col-lg-12" style="height:80px; padding-top:20px;">
+        @if (ViewBag.RolesForThisUser != null)
+        {
+            <div class="col-lg-12" style="height:auto; padding: 0px 0px">
                 <text>
                     <h4>Grupos deste usuário </h4>
                     <ol>
                         @foreach (string s in ViewBag.RolesForThisUser)
-                {
-                            <li style="list-style-type:circle">@s</li>
+                        {
+                            <li style="margin:3px;">@s</li>
                         }
                     </ol>
                 </text>
             </div>
-
         }
-            }
 
+        
 
         <div class="col-lg-12" style="height:80px; margin-top:30px;">
             <h4>Excluir usuário de um grupo</h4>
@@ -240,5 +231,4 @@
             }
         </div>
     </div>
-
 </div>

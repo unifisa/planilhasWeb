@@ -262,11 +262,16 @@ namespace Planilhas.Controllers
         [Authorize(Roles = "Admin")]    //autoriza somente quem for Admin
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult GetRoles(string UserName)
+        public ActionResult GetRoles(string Usuario)
         {
-                ViewBag.RolesForThisUser = Roles.GetRolesForUser(UserName);
-                SelectList list = new SelectList(Roles.GetAllRoles());
-                ViewBag.Roles = list;
+            var Depart = db.Roles.ToList();
+            SelectList list = new SelectList(Depart, "RoleName", "RoleName");
+            ViewBag.NomeRegra = list;
+
+            var ur = (from u in db.UserRoles
+                     where u.Usuario == Usuario
+                     select u.RoleName).ToArray();
+            ViewBag.RolesForThisUser = ur;
             
             return View("RoleAddToUser");
         }
