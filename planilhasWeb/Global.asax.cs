@@ -11,7 +11,14 @@ namespace Planilhas
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+            RegisterGlobalFilters(GlobalFilters.Filters);
+            RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+        }
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
@@ -26,14 +33,7 @@ namespace Planilhas
                 new { controller = "Listar_DN", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
         }
-        protected void Application_Start()
-        {
-            AreaRegistration.RegisterAllAreas();
-            RegisterGlobalFilters(GlobalFilters.Filters);
-            RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-        }
+        
     }
 
 

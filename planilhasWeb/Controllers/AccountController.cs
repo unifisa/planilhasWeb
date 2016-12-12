@@ -14,6 +14,7 @@ using System.Web.Security;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using WebMatrix.WebData;
 
 namespace Planilhas.Controllers
 {
@@ -60,6 +61,7 @@ namespace Planilhas.Controllers
 
                 using (OurDbContext db = new OurDbContext())
                 {
+                   
                     db.userAccount.Add(account);
                     db.SaveChanges();
                 }
@@ -98,10 +100,10 @@ namespace Planilhas.Controllers
                 if (usr != null)
                 {
 
-                    System.Web.HttpContext.Current.Session["ColaboradorId"] = usr.ColaboradorId;
-                    System.Web.HttpContext.Current.Session["Usuario"] = usr.Usuario.ToString();
+                    Session["ColaboradorId"] = usr.ColaboradorId;
+                    Session["Usuario"] = usr.Usuario.ToString();
                     FormsAuthentication.SetAuthCookie(usr.Usuario.ToString(), createPersistentCookie: true);
-                    if (System.Web.HttpContext.Current.Session["ColaboradorID"] != null)
+                    if (Session["ColaboradorID"] != null)
                     {
 
 
@@ -122,7 +124,7 @@ namespace Planilhas.Controllers
         {
 
 
-            if (System.Web.HttpContext.Current.Session["Usuario"] != null)
+            if (Session["Usuario"] != null)
             {
 
                 return View();
@@ -131,7 +133,7 @@ namespace Planilhas.Controllers
             else
             {
                 FormsAuthentication.SignOut();
-                System.Web.HttpContext.Current.Session.Abandon();
+                Session.Abandon();
                 return RedirectToAction("Login");
             }
         }
@@ -345,6 +347,26 @@ namespace Planilhas.Controllers
 
 
             return View("RoleAddToUser");
+        }
+
+        [AllowAnonymous]
+        public string ChecarUsuario(string input)
+        {
+           
+            var ifuser = (from u in db.userAccount
+                        where u.Usuario == input
+                        select u).SingleOrDefault();
+     
+                if (ifuser == null)
+            {
+                return "Disponivel";
+            }
+            if (ifuser != null)
+            {
+                return "Indisponivel";
+            }
+
+            return "";
         }
 
     }

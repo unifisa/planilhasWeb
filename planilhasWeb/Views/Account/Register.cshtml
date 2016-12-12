@@ -72,8 +72,11 @@
                         <div class="col-md-10 left-addon">
                             <i class="glyphicon glyphicon-user"></i>
                             @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", placeholder = "Digite o nome de usuario" } })
-                            @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                           
+                            @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger"})
+                            <div id="result"></div>
                         </div>
+                        
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -98,6 +101,7 @@
                             <div class="col-md-10">
                                 @Html.DropDownList("Name")
                             </div>
+                        
                         </div>*@
 
                     <div class="form-group">
@@ -112,7 +116,32 @@
             @*<div>
                     @Html.ActionLink("Voltar a lista", "Index")
                 </div>*@
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-            }
+
+    //verifica se o usuario já existe no banco de dados
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script type="text/jscript">
+            $('#Usuario').keyup(function () {
+                var url = "/Account/ChecarUsuario";
+                var name = $('#Usuario').val();
+                if (name.length > 2) {
+                    $.get(url, { input: name }, function (data) {
+                        if (data == "Disponivel") {
+                            $("#result").html("<span style='color:green'>Disponível</span>");
+                            $("#Usuario").css('border-color', 'green');
+                        }
+                        else {
+                            $("#result").html("<span style='color:red'>Indisponivel</span>");
+                            $("#Usuario").css('border-color', '#e97878');
+
+                        }
+                    });
+                }
+                if(name.length < 1) {
+                    $("#result").html("<span style='color:green'></span>");
+                    $("#Usuario").css('border-color', '#ccc');
+                }
+            })
+        </script>
+    }
 }
