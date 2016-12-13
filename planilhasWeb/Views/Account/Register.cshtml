@@ -74,7 +74,7 @@
                             @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", placeholder = "Digite o nome de usuario" } })
                            
                             @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger"})
-                            <div id="result"></div>
+                            <span id="result"></span>
                         </div>
                         
                     </div>
@@ -131,7 +131,7 @@
                             $("#Usuario").css('border-color', 'green');
                         }
                         else {
-                            $("#result").html("<span style='color:red'>Indisponivel</span>");
+                            $("#result").html("<span style='color:red;'>Indisponível</span>");
                             $("#Usuario").css('border-color', '#e97878');
 
                         }

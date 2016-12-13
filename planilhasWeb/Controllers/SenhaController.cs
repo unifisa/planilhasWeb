@@ -40,7 +40,7 @@ namespace Planilhas.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                if (usr != null)
+                if (usr != null && Senha == ConfirmeSenha)
                 {
                     if (Senha != usr.Senha && ConfirmeSenha != usr.ConfirmeSenha)
                     {
@@ -57,9 +57,22 @@ namespace Planilhas.Controllers
                         TempData["Msg"] = "Não coloque a senha atual. Tente novamente ";
                         return View();
                     }
-
-
                 }
+                else
+                    {
+                        if(Senha != ConfirmeSenha)
+                        {
+                        ModelState.Clear();
+                        TempData["Msg"] = "Coloque senhas iguais";
+                        return View();
+                        }
+                       
+                       
+                    
+                }
+
+
+                
 
 
                 return View(usr);
