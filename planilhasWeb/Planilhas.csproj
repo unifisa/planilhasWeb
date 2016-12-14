@@ -199,9 +199,9 @@
     <Compile Include="Controllers\Requisicao_FisaController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SenhaController.cs" />
-    <Compile Include="Migrations\201611301659081_Contexto.cs" />
-    <Compile Include="Migrations\201611301659081_Contexto.Designer.cs">
-      <DependentUpon>201611301659081_Contexto.cs</DependentUpon>
+    <Compile Include="Migrations\201612141538052_ProjetoPlanilhas.cs" />
+    <Compile Include="Migrations\201612141538052_ProjetoPlanilhas.Designer.cs">
+      <DependentUpon>201612141538052_ProjetoPlanilhas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DecimalModelBinder.cs" />
@@ -508,8 +508,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611301659081_Contexto.resx">
-      <DependentUpon>201611301659081_Contexto.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612141538052_ProjetoPlanilhas.resx">
+      <DependentUpon>201612141538052_ProjetoPlanilhas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorio.rdlc" />
     <EmbeddedResource Include="Report1.rdlc" />

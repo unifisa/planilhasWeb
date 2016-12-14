@@ -102,7 +102,7 @@ namespace Planilhas.Controllers
 
                     Session["ColaboradorId"] = usr.ColaboradorId;
                     Session["Usuario"] = usr.Usuario.ToString();
-                    FormsAuthentication.SetAuthCookie(usr.Usuario.ToString(), createPersistentCookie: true);
+                    FormsAuthentication.SetAuthCookie(usr.Usuario.ToString(), false);
                     if (Session["ColaboradorID"] != null)
                     {
 
@@ -124,7 +124,7 @@ namespace Planilhas.Controllers
         {
 
 
-            if (Session["Usuario"] != null)
+            if (Request.IsAuthenticated)
             {
 
                 return View();
@@ -245,6 +245,7 @@ namespace Planilhas.Controllers
                 ViewBag.ResultMessage = "Não deixe o campo vazio!";
                 return View();
             }
+            
             var Depart = db.Roles.ToList();
             SelectList list = new SelectList(Depart, "RoleName", "RoleName");
             ViewBag.NomeRegra = list;
@@ -275,6 +276,37 @@ namespace Planilhas.Controllers
                      select u.RoleName).ToArray();
             ViewBag.RolesForThisUser = ur;
             
+            return View("RoleAddToUser");
+        }
+
+
+
+        //deletar usuario de uma regra
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteRoleForUser(string Username, string RoleName)
+        {
+            var Depart = db.Roles.ToList();
+            SelectList list = new SelectList(Depart, "RoleName", "RoleName");
+            ViewBag.NomeRegra = list;
+
+            var del = (from d in db.UserRoles
+                      where (d.Usuario == Username) && (d.RoleName == RoleName)
+                      select d).SingleOrDefault();
+
+            if(del != null)
+            {            
+            db.UserRoles.Remove(del);
+            db.SaveChanges();
+            ModelState.Clear();
+            ViewBag.ResultMessage = "Usuário excluido com sucesso deste grupo!";
+            }
+            else
+            {
+                ViewBag.ResultMessage = "Este usuário não pertence a este grupo!";
+            }
+
             return View("RoleAddToUser");
         }
 
@@ -324,30 +356,6 @@ namespace Planilhas.Controllers
         }
 
 
-
-        //deletar usuario de uma regra
-        [HttpPost]
-       [Authorize(Roles = "Admin")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteRoleForUser(string UserName, string RoleName)
-        {
-
-            if (Roles.IsUserInRole(UserName, RoleName))
-            {
-                Roles.RemoveUserFromRole(UserName, RoleName);
-                ViewBag.ResultMessage = "Usuário removido deste grupo com sucesso!";
-            }
-            else
-            {
-                ViewBag.ResultMessage = "Este usuario não pertence ao grupo selecionado";
-            }
-            ViewBag.RolesForThisUser = Roles.GetRolesForUser(UserName);
-            SelectList list = new SelectList(Roles.GetAllRoles());
-            ViewBag.Roles = list;
-
-
-            return View("RoleAddToUser");
-        }
 
         [AllowAnonymous]
         public string ChecarUsuario(string input)

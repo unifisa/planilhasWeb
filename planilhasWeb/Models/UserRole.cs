@@ -9,6 +9,8 @@ namespace Planilhas.Models
     public class UserRole
     {
         [Key]
+        public int Id { get; set; }
+
         [Display(Name = "Usuario")]
         public string Usuario { get; set; }
 

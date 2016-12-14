@@ -893,5 +893,5 @@ C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\RdlCompile.compiled
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.dll
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.pdb
-C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.Migrations.Contexto.resources
+C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.Migrations.ProjetoPlanilhas.resources
 C:\Users\unifisa\Documents\Visual Studio 2015\Projects\planilhasWeb\planilhasWeb\planilhasWeb\obj\Debug\Planilhas.csproj.GenerateResource.Cache
