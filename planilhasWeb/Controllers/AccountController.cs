@@ -245,16 +245,30 @@ namespace Planilhas.Controllers
                 ViewBag.ResultMessage = "Não deixe o campo vazio!";
                 return View();
             }
-            
+
+            var verifica = (from v in db.UserRoles
+                            where (v.Usuario == adiciona.Usuario) && (v.RoleName == adiciona.RoleName)
+                            select v).FirstOrDefault();
+
             var Depart = db.Roles.ToList();
             SelectList list = new SelectList(Depart, "RoleName", "RoleName");
             ViewBag.NomeRegra = list;
 
-            db.UserRoles.Add(adiciona);
-            db.SaveChanges();
+            if(verifica == null)
+            {
+                db.UserRoles.Add(adiciona);
+                db.SaveChanges();
 
-            ViewBag.ResultMessage = "Regra adicionada com sucesso ao usuário !";
+                ViewBag.ResultMessage = "Regra adicionada com sucesso ao usuário !";
+                return View();
+
+            }
+            else
+            {
+                ViewBag.ResultMessage = "Este usuário já está nesse grupo!";
+            }
             return View();
+            
         }
 
         /// <summary>
