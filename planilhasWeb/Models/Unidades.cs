@@ -11,6 +11,7 @@ namespace Planilhas.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Unidades")]
         public string unidades { get; set; }
 
         

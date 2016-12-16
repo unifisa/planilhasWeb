@@ -55,7 +55,9 @@
 //            if (user == null)
 //                return new string[] { };
 
-//            //List<String> permissoes = user.Usuario.Select(p => p.).ToList();
+//            var permissoes = (from u in db.UserRoles
+//                      where u.Usuario == username
+//                      select u.RoleName).ToList();
 
 
 //            return permissoes.ToArray();

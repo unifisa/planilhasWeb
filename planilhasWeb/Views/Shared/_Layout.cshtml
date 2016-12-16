@@ -70,11 +70,7 @@
 
 
     <div class="container body-content">
-        @if (ViewBag.title != "Logado" && ViewBag.title == "ListaDiretoria")
-        {
-            <span style="font-size:20px;text-transform:uppercase; font-family:'Lato', Arial, sans-serif;">@Html.ActionLink("Diretoria", "ListaDiretoria", "ListaPlanilhas")</span>
-        }
-
+       
         @RenderBody()
 
     </div>
@@ -281,20 +277,20 @@
             </div>
         }
     </div>
-
-
-
-
+    
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqwidgets")
+    
     @RenderSection("scripts", required: false)
+    <script src="~/js/jquery-3.1.1.js"></script> @* responsavel pelo datepicker *@
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
     <script src="~/js/classie.js"></script>
     <script src="~/js/gnmenu.js"></script>
     <script>
         new gnMenu(document.getElementById('gn-menu'));
     </script>
+    @Scripts.Render("~/bundles/jqwidgets") @* responsavel pelo tabela de dados do Index *@
 
 
 </body>

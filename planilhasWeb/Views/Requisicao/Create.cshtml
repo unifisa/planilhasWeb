@@ -137,7 +137,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="noPrint">
-                            @*<h5 style="margin-top:10px;"><a href="/Requisicao/Index">Voltar</a></h5>*@
+                            <h5 style="margin-top:10px;"><a href="/Requisicao/Index">.</a></h5>
                         </div>
                     </div>
                  <!--mensagem de sucesso depois de salvo-->
@@ -275,30 +275,10 @@
                                 </div>
                                 <div class="col-sm-2" style="padding-left:0.1px;">
                                     <div class="form-group">
-                                        <label>Unidade</label>
+                                        
                                         <div class="input-group" style="width:100%;">
-                                            @Html.DropDownListFor(model => model.unidade, new SelectList(
-         new List<Object>{
-                                                   new { value = "Matriz" , text = "Matriz"  },
-                                                   new { value = "Z. Sul - SP" , text = "Z. Sul - SP" },
-                                                   new { value = "Sto André" , text = "Santo André" },
-                                                   new { value = "Zona Leste - SP" , text = "Zona Leste - SP" },
-                                                   new { value = "Aguia" , text = "Aguia" },
-                                                   new { value = "S B do Campo" , text = "S B do Campo" },
-                                                   new { value = "Maringá" , text = "Maringá" },
-                                                   new { value = "Osasco" , text = "Osasco" },
-                                                   new { value = "Sao Caetano" , text = "Sao Caetano" },
-                                                   new { value = "Londrina" , text = "Londrina" },
-                                                   new { value = "Santo Amaro" , text = "Santo Amaro" },
-                                                   new { value = "Z.Norte - SP" , text = "Z.Norte - SP" },
-                                                   new { value = "Guarulhos" , text = "Guarulhos" },
-                                                   new { value = "Rib Preto" , text = "Rib Preto" },
-                                                   new { value = "Campinas" , text = "Campinas" },
-                                                   new { value = "Taboão da Serra" , text = "Taboão da Serra" },
-                                                   new { value = "Mogi das Cruzes" , text = "Mogi das Cruzes" },
-
-         }
-         , "value", "text", 2), "", new { @style = "width: 100%; border - radius: 5px; " })
+                                            <label>Unidades</label><br />
+                                            @Html.DropDownList("Unidade", ViewBag.UnidadeNome as SelectList, " ", new { @style = "width: 185px; border-radius:5px;" })
                                         </div>
                                     </div>
                                     @Html.ValidationMessageFor(model => model.unidade, "", new { @class = "text-danger" })

@@ -49,6 +49,7 @@ namespace Planilhas.Controllers
             ViewBag.DepartamentoNome = list;
             return View();            
         }
+
         //pagina de Cadastro
         [HttpPost]
         [Authorize(Roles = "Admin")]
@@ -56,9 +57,7 @@ namespace Planilhas.Controllers
         public ActionResult Register(UserAccount account)
         {
             if (ModelState.IsValid)
-
             {
-
                 using (OurDbContext db = new OurDbContext())
                 {
                    
@@ -124,7 +123,7 @@ namespace Planilhas.Controllers
         {
 
 
-            if (Request.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
 
                 return View();
@@ -196,7 +195,7 @@ namespace Planilhas.Controllers
                     
                     return View();
                 }
-                // ViewBag.ResultMessage = "Role created successfully !";
+              
             }
            
         }
@@ -240,20 +239,23 @@ namespace Planilhas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RoleAddToUser(UserRole adiciona)
         {
+            //verifica se o campo está vazio
             if ((Request.Form["UserName"]) == "" || (Request.Form["RoleName"]) == "")
             {
                 ViewBag.ResultMessage = "Não deixe o campo vazio!";
                 return View();
             }
-
+            //verifica se o usuario ja esta no grupo escolhido
             var verifica = (from v in db.UserRoles
                             where (v.Usuario == adiciona.Usuario) && (v.RoleName == adiciona.RoleName)
                             select v).FirstOrDefault();
 
+            //lista as regras direto do banco de dados
             var Depart = db.Roles.ToList();
             SelectList list = new SelectList(Depart, "RoleName", "RoleName");
             ViewBag.NomeRegra = list;
 
+            //adiciona no banco e salva
             if(verifica == null)
             {
                 db.UserRoles.Add(adiciona);
@@ -281,10 +283,12 @@ namespace Planilhas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult GetRoles(string Usuario)
         {
+            //lista as regras direto do banco de dados
             var Depart = db.Roles.ToList();
             SelectList list = new SelectList(Depart, "RoleName", "RoleName");
             ViewBag.NomeRegra = list;
 
+            //seleciona o nome da regra e joga em um array
             var ur = (from u in db.UserRoles
                      where u.Usuario == Usuario
                      select u.RoleName).ToArray();
@@ -324,6 +328,7 @@ namespace Planilhas.Controllers
             return View("RoleAddToUser");
         }
 
+        //da sugestoes de usuarios de acordo com as letras digitadas, autocompleta
         [HttpPost]
         public JsonResult AutocompletenoClick(string term)
         {
@@ -335,6 +340,7 @@ namespace Planilhas.Controllers
 
         }
 
+        //quando o usuario muda de campo, preenche automaticamente o departamento dele - busca no banco de dados
         [HttpPost]
         public JsonResult BindDepartamento(string term)
         {
@@ -346,7 +352,7 @@ namespace Planilhas.Controllers
 
         }
 
-
+        //da sugestoes de usuarios de acordo com as letras digitadas, autocompleta
         [HttpPost]
         public JsonResult Autocomplete(string term)
         {
@@ -358,6 +364,7 @@ namespace Planilhas.Controllers
 
         }
 
+        //preenche o nome automaticamente de acordo com o usuario escolhido
         [HttpPost]
         public JsonResult Autocomplete2(string term)
         {
@@ -370,7 +377,7 @@ namespace Planilhas.Controllers
         }
 
 
-
+        //checa se esse nome está disponivel no banco de dados - Cadastro de usuários na view Register
         [AllowAnonymous]
         public string ChecarUsuario(string input)
         {

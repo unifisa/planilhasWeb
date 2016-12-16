@@ -171,7 +171,9 @@ namespace Planilhas.Controllers
         // GET
         public ActionResult Create()
         {
-
+            var Unidade = db.Unidades.ToList();
+            SelectList list = new SelectList(Unidade, "unidades", "unidades");
+            ViewBag.UnidadeNome = list;
 
             return View(req);
         }

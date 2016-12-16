@@ -13,7 +13,7 @@
 //        {
 //            base.OnAuthorization(filterContext);
 
-//            if(filterContext.Result is HttpUnauthorizedResult)
+//            if (filterContext.Result is HttpUnauthorizedResult)
 //            {
 //                filterContext.HttpContext.Response.Redirect("/Account/Semacesso");
 //            }

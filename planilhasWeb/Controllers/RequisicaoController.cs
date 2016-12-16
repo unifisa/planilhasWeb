@@ -183,7 +183,10 @@ namespace Planilhas.Controllers
         // GET - Retorna a view Create para o usuario inserir as informações
         public ActionResult Create()
         {
-           
+            var Unidade = db.Unidades.ToList();
+            SelectList list = new SelectList(Unidade, "unidades", "unidades");
+            ViewBag.UnidadeNome = list;
+
             return View(req);
         }        
 
