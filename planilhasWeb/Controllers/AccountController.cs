@@ -58,8 +58,19 @@ namespace Planilhas.Controllers
         {
             if (ModelState.IsValid)
             {
+                var Depart = db.Departamentos.ToList();
+                SelectList list = new SelectList(Depart, "Departamento", "Departamento");
+                ViewBag.DepartamentoNome = list;
+
                 using (OurDbContext db = new OurDbContext())
                 {
+                    var usr = db.userAccount.Where(u => u.Usuario == account.Usuario).FirstOrDefault();
+                    if (usr != null)
+                    {
+                        ModelState.Clear();
+                        ViewBag.ResultMessage = " Este usuário está indisponivel, tente outro nome de usuário! ";
+                        return View();
+                    }
                    
                     db.userAccount.Add(account);
                     db.SaveChanges();

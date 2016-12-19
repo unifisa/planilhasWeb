@@ -32,6 +32,15 @@
 
                     }
 
+                    @if (ViewBag.ResultMessage != null)
+
+                    {
+                        <div class="form-group">
+                            <div style="color:red; padding-left:20px;">@ViewBag.ResultMessage</div>
+                        </div>
+
+                    }
+
                     <div class="form-group">
                         @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10 left-addon">

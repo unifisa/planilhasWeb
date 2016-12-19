@@ -58,7 +58,7 @@ namespace Planilhas.Controllers
             return View();
         }
 
-        [AccessDeniedAuthorize(Roles = "Contabilidade")]
+        
         public ActionResult ListaContabilidade()
         {
             return View();
