@@ -281,9 +281,13 @@
     
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    
-    @RenderSection("scripts", required: false)
-    <script src="~/js/jquery-3.1.1.js"></script> @* responsavel pelo datepicker *@
+    @if (Request.IsAuthenticated && @ViewBag.title == "ListaFinanceiro")
+    {
+   
+        <script src="~/js/jquery-3.1.1.js"></script> @* responsavel pelo datepicker *@
+       
+    }    
+    @RenderSection("scripts", required: false)   
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
     <script src="~/js/classie.js"></script>
     <script src="~/js/gnmenu.js"></script>

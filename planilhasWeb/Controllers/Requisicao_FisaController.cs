@@ -183,70 +183,78 @@ namespace Planilhas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Requisicao_Fisa req)
         {
-            using (OurDbContext db = new OurDbContext())
+            if (ModelState.IsValid)
             {
+                using (OurDbContext db = new OurDbContext())
+                {
 
-                if (req.valor1 == null)
-                {
-                    req.valor1 = 0;
-                }
-                if (req.valor2 == null)
-                {
-                    req.valor2 = 0;
-                }
-               if (req.categoria_despesa == "conserto_equip")
-                {
-                    req.categoria_despesa = "Conserto de Equipamentos";
-                }
-                if (req.categoria_despesa == "internet")
-                {
-                    req.categoria_despesa = "Internet";
-                }
-                if (req.categoria_despesa == "telefone")
-                {
-                    req.categoria_despesa = "Telefone";
-                }
-                if (req.categoria_despesa == "servicos")
-                {
-                    req.categoria_despesa = "Servicos";
-                }
-                if (req.categoria_despesa == "site_hosp")
-                {
-                    req.categoria_despesa = "Site de Hospedagem";
-                }
-                if (req.categoria_despesa == "pacote_serv")
-                {
-                    req.categoria_despesa = "Pacote de Serviços";
-                }
-                if (req.categoria_despesa == "conserto_equip")
-                {
-                    req.categoria_despesa = "Conserto de Equipamentos";
-                }
-                if (req.categoria_despesa == "compra_equip")
-                {
-                    req.categoria_despesa = "Compra de Equipamentos";
-                }
+                    if (req.valor1 == null)
+                    {
+                        req.valor1 = 0;
+                    }
+                    if (req.valor2 == null)
+                    {
+                        req.valor2 = 0;
+                    }
+                    if (req.categoria_despesa == "conserto_equip")
+                    {
+                        req.categoria_despesa = "Conserto de Equipamentos";
+                    }
+                    if (req.categoria_despesa == "internet")
+                    {
+                        req.categoria_despesa = "Internet";
+                    }
+                    if (req.categoria_despesa == "telefone")
+                    {
+                        req.categoria_despesa = "Telefone";
+                    }
+                    if (req.categoria_despesa == "servicos")
+                    {
+                        req.categoria_despesa = "Servicos";
+                    }
+                    if (req.categoria_despesa == "site_hosp")
+                    {
+                        req.categoria_despesa = "Site de Hospedagem";
+                    }
+                    if (req.categoria_despesa == "pacote_serv")
+                    {
+                        req.categoria_despesa = "Pacote de Serviços";
+                    }
+                    if (req.categoria_despesa == "conserto_equip")
+                    {
+                        req.categoria_despesa = "Conserto de Equipamentos";
+                    }
+                    if (req.categoria_despesa == "compra_equip")
+                    {
+                        req.categoria_despesa = "Compra de Equipamentos";
+                    }
 
 
+                    req.total = (req.valor1 + req.valor2);
+                    req.alteracao = DateTime.Now;
+                    req.usuario = User.Identity.GetUserName();
 
-                req.total = (req.valor1 + req.valor2);
-                req.alteracao = DateTime.Now;
-                req.usuario = User.Identity.GetUserName();
+                    try
+                    {
 
-                try
-                {
-                    db.Requisicao_Fisa.Add(req);
-                    db.SaveChanges();
-                    TempData["Message"] = " Salvo com Sucesso ";
-                    return RedirectToAction("Index");
-                }
+                        var Unidade = db.Unidades.ToList();
+                        SelectList list = new SelectList(Unidade, "unidades", "unidades");
+                        ViewBag.UnidadeNome = list;
 
-                catch (Exception)
-                {
-                    TempData["Msg"] = " Preencha os campos solicitados ";
-                    return View(req);
+                        db.Requisicao_Fisa.Add(req);
+                        db.SaveChanges();
+                        TempData["Message"] = " Salvo com Sucesso ";
+                        return RedirectToAction("Index");
+                    }
+
+                    catch (Exception)
+                    {
+                        TempData["Msg"] = " Preencha os campos solicitados ";
+                        return View(req);
+                    }
                 }
             }
+            return View();
         }
 
         // GET: /Orders/Details/5
